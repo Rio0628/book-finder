@@ -1,0 +1,25 @@
+MODEL FOR INDIVIDUAL BOOK OPENED
+
+- picture 
+- title 
+- author
+- published 
+- category
+- description 
+- comments or reviews ( Done by the user )
+- category for saved book ( Favorites, Genre, To Read, etc... )
+
+MODEL FOR PREVIEW BOOK
+
+- picture
+- title 
+- author
+- category
+
+MODEL FOR PREVIEW BOOK ( SAVED BOOK )
+
+- picture
+- title 
+- author
+- category
+- category for saved book   
