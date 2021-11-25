@@ -4,3 +4,86 @@ body {
   margin: 0;
 }
 
+.container {
+  height: 100vh;
+  width: 100vw;
+  color: #131112;
+}
+
+/* -- NAV BAR STYLES -- */
+
+.nav-barCntr {
+  display: flex;
+  justify-content: space-between;
+  outline: 1px solid #9ca2a3;
+  height: 2.7rem;
+}
+
+.sidebarBtn {
+  position: relative;
+  left: .5rem;
+  top: .5rem;
+  font-size: 20px;
+  /* outline: 1px solid black; */
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebarBtn:hover {
+  background: #dde1e8;
+  transition: .125s ease-in-out;
+}
+
+.sidebarBtn:active {
+  background: none;
+  outline: 1px solid #dde1e8;
+  transition: .2s ease-in-out;;
+}
+
+.searchbarCntr {
+  position: relative;
+  top: .7rem;
+  right: 1rem;
+  height: 1.4rem;
+  outline: 1px solid #dde1e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.searchbar {
+  position: relative;
+  bottom: 10px;
+  left: 4px;
+  outline: none;
+  border: none;
+}
+
+.searchbar:active {
+  outline: none;
+  border: none;
+}
+
+.searchBtn {
+  position: relative;
+  bottom: 2px;
+  outline: 1px solid #dde1e8;
+  font-size: 20px;
+  padding: 3px 5px 3px 3px;
+  cursor: pointer;
+}
+
+.searchBtn:hover {
+  background: #dde1e8;
+}
+
+/*     <div className="container">
+        <div className='nav-barCntr'>
+          <AiOutlineMenu className='sidebarBtn'/>
+
+          <BiSearchAlt className='searchBtnCls'/>
+
+          <div className='searchbarCntr'>
+            <input className='searchbar' placeholder='Search Book...'></input>
+            <BiSearchAlt className='searchBtnOpen'/>
+          </div> */

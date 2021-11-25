@@ -11,7 +11,14 @@ class App extends Component {
     return (
       <div className="container">
         <div className='nav-barCntr'>
+          <AiOutlineMenu className='sidebarBtn'/>
 
+          {/* <BiSearchAlt className='searchBtnCls'/> */}
+
+          <div className='searchbarCntr'>
+            <input className='searchbar' placeholder='Search Book...'></input>
+            <BiSearchAlt className='searchBtn'/>
+          </div>
         </div>
 
         <h1>Hello</h1>
