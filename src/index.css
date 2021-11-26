@@ -186,11 +186,18 @@ body {
   outline: 1px solid black;
 }
 
+.mainInfoCntr {
+  position: relative;
+  left: 1.5rem;
+  width: 70vw;
+  /* outline: 1px solid red; */
+}
+
 .indBookTitle {
   position: relative;
-  left: 2rem;
+  /* left: 2rem; */
   bottom: 8px;
-  width: 75vw;
+  /* width: 75vw; */
   font-family: 'M PLUS 1';
   font-size: 17px;
   letter-spacing: 3px;
@@ -201,9 +208,9 @@ body {
 
 .authorGenreCntr {
   position: relative;
-  left: 2rem;
+  /* left: 2rem; */
   bottom: 17px;
-  width: 90%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   height: 1.5rem;
@@ -211,4 +218,44 @@ body {
   font-size: 12px;
   align-items: center;
   pointer-events: none;
+}
+
+/* -- SAVED BOOKS STYLES -- */
+
+.savedBooksCntr {
+  position: relative;
+  bottom: 1rem;
+  height: 100vh;
+}
+
+.savedBooksHeading {
+  font-family: 'M PLUS 1';
+  font-size: 17px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0px 1px 0px #9ca2a3;
+}
+
+.removeBtn {
+  position: relative;
+  top: .8rem;
+  right: 1.2rem;
+  height: 1.2rem;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 1px 3px;
+  border-radius: 2px;
+  cursor: pointer;
+  /* outline: 1px solid red; */
+}
+
+.removeBtn:hover {
+  background: #ffffff;
+  transition: .125s ease-in-out;
+}
+
+.removeBtn:active {
+  outline: 1px solid #dde1e8;
+  background: none;
+  transition: .125s ease-in-out;
 }
