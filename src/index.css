@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  font-family: 'Open Sans';
 }
 
 .container {
@@ -77,13 +78,59 @@ body {
   background: #dde1e8;
 }
 
-/*     <div className="container">
-        <div className='nav-barCntr'>
-          <AiOutlineMenu className='sidebarBtn'/>
+/* -- SIDEBAR STYLES -- */
 
-          <BiSearchAlt className='searchBtnCls'/>
+.sidebar {
+  position: relative;
+  bottom: 8.1rem;
+  width: 40%;
+  height: 100vh;
+  background: linear-gradient( #f2f5ff, #dde1e8);
+  box-shadow: 2px 0px 6px #dde1e8;
+  outline: 1px solid #dde1e8;
+}
 
-          <div className='searchbarCntr'>
-            <input className='searchbar' placeholder='Search Book...'></input>
-            <BiSearchAlt className='searchBtnOpen'/>
-          </div> */
+.sidebarBtnOpen {
+  position: relative;
+  left: 6rem;
+  top: 1rem;
+  font-size: 20px;
+  /* outline: 1px solid black; */
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebarBtnOpen:hover {
+  background: #dde1e8;
+  transition: .125s ease-in-out;
+}
+
+.sidebarBtnOpen:active {
+  background: none;
+  outline: 1px solid #dde1e8;
+  transition: .2s ease-in-out;;
+}
+
+.categoriesCntr {
+  position: relative;
+  top: 7rem;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  /* outline: 1px solid red; */
+ 
+}
+
+.category {
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.category:hover {
+  text-decoration: underline;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
  
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
 
     return (
       <div className="container">
+
         <div className='nav-barCntr'>
           <AiOutlineMenu className='sidebarBtn'/>
 
@@ -22,6 +24,15 @@ class App extends Component {
         </div>
 
         <h1>Hello</h1>
+        
+        <div className='sidebar'>
+          <AiOutlineClose className='sidebarBtnOpen'/>
+
+          <div className='categoriesCntr'>
+            <p className='category'>Search Book</p>
+            <p className='category'>Saved Books</p>
+          </div>
+        </div>
       </div>
     );
   }
