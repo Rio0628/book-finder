@@ -134,3 +134,81 @@ body {
 .category:hover {
   text-decoration: underline;
 }
+
+/* -- IND BOOK STYLES -- */
+
+.searchBooksCntr {
+  position: relative;
+  bottom: 1rem;
+  height: 100vh;
+  /* outline: 1px solid red; */
+}
+
+.searchRsltsHeading {
+  font-family: 'M PLUS 1';
+  font-size: 17px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0px 1px 0px #9ca2a3;
+  /* outline: 1px solid green; */
+}
+
+.booksCntr {
+  position: relative;
+  bottom: 1rem;
+  height: 100vh;
+  overflow: hidden;
+  /* outline: 1px solid red; */
+}
+
+.indBookCntr {
+  display: flex;
+  /* justify-content: space-evenly;  */
+  box-shadow: 1px 0px 0px #444545, -1px 0px 0px #444545;
+  cursor: pointer;
+  /* outline: 1px solid black; */
+}
+
+.indBookCntr:nth-child(even) {
+  background: rgba(242, 245, 244, 1);
+}
+
+.indBookCntr:hover {
+  background: #e2dfdf;
+}
+
+.thumbnailBook {
+  position: relative;
+  top: .6rem;
+  left: 1rem;
+  height: 60px;
+  width: 40px;
+  outline: 1px solid black;
+}
+
+.indBookTitle {
+  position: relative;
+  left: 2rem;
+  bottom: 8px;
+  width: 75vw;
+  font-family: 'M PLUS 1';
+  font-size: 17px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  overflow: hidden;
+  /* outline: 1px solid red; */
+}
+
+.authorGenreCntr {
+  position: relative;
+  left: 2rem;
+  bottom: 17px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  height: 1.5rem;
+  /* outline: 1px solid red; */
+  font-size: 12px;
+  align-items: center;
+  pointer-events: none;
+}
