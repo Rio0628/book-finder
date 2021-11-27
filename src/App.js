@@ -4,8 +4,8 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
 import IndBookView from './components/IndBookView';
-import IndSearchBook from './components/IndSearchBook';
 import SavedBooks from './components/SavedBooks';
+import SearchRsltBooks from './components/SearchRsltBooks';
 
 class App extends Component {
   render () {
@@ -26,20 +26,9 @@ class App extends Component {
           </div>
         </div>
 
-        {/* <div className='searchBooksCntr'>
-          <p className='searchRsltsHeading'>Results: Name Of Book</p>
-
-          <div className='booksCntr'>
-            <IndSearchBook />
-            <IndSearchBook />
-            <IndSearchBook />
-            <IndSearchBook />
-            <IndSearchBook />
-            <IndSearchBook />
-          </div>
-        </div> */}
         
-        <IndBookView />
+        <SearchRsltBooks />
+        {/* <IndBookView /> */}
         {/* <SavedBooks /> */}
 
         {/* <div className='sidebar'>

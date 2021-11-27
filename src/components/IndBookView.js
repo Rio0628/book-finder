@@ -33,7 +33,9 @@ const IndBookView = () => {
             </div>
 
             <div className='commentsCntr'>
-                <p className='indComment'>This is a comment added by an user. <p>X</p></p>
+                <div className='indComment'>This is a comment added by an user. <p>X</p></div>
+                <div className='indComment'>This is a comment added by an user. <p>X</p></div>
+                <div className='indComment'>This is a comment added by an user. <p>X</p></div>
             </div>
         </div>
     );
