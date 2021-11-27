@@ -85,12 +85,17 @@ body {
 .sidebar {
   position: absolute;
   bottom: -0px;
+  left: -30rem; 
   width: 40%;
   height: 100vh;
   background: linear-gradient( #f2f5ff, #dde1e8);
   box-shadow: 2px 0px 6px #dde1e8;
   outline: 1px solid #dde1e8;
   z-index: 1;
+}
+
+.sidebar.active {
+  left: 0rem;
 }
 
 .sidebarBtnOpen {
@@ -419,12 +424,12 @@ body {
   align-items: center;
   width: 100vw;
   height: 10rem;
-  outline: 1px solid #333;
+  outline: 1px solid #dde1e8;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.commentsCntr:--webkit-scrollbar {
+.commentsCntr::-webkit-scrollbar {
   width: 0px; 
 }
 
@@ -466,5 +471,103 @@ body {
   transition: .1s ease-in-out;
 }
 
+/* -- HORIZONTAL SIDEBAR STYLES -- */
+
+
+
+/*  <div className='sidebarHrzntl'>
+          <AiOutlineClose className='sidebarBtnOpen'/>
+
+          <div className='categoriesCntr'>
+            <p className='category'>Search Book</p>
+            <p className='category'>Saved Books</p>
+            <p className='category'>General</p>
+            <p className='category'>Favorites</p>
+            <p className='category'>To Read</p>
+          </div> */
+
 /* -- MEDIA QUERIES -- */
 
+@media screen and (min-width: 450px) {
+  .sidebarBtnOpen {
+    position: relative;
+    left: 10rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .sidebarBtn {
+    top: .3rem;
+    font-size: 21px;
+    padding: 5px;
+  }
+
+  .searchbar {
+    width: 15rem;
+    bottom: 15px;
+    font-size: 14px;
+    /* outline: 1px solid red; */
+  }
+
+  .searchBtn {
+    font-size: 22px;
+    padding: 5px 6px 5px 5px ;
+  }
+
+  .searchbarCntr {
+    top: .55rem;
+    height: 1.55rem;
+  }
+  
+  .sidebarBtnOpen {
+    top: -20rem;
+  }
+  
+  .sidebar {
+    position: relative;
+    /* bottom: -40rem; */
+    left: 0px;
+    height: 1.5rem;
+    width: 100vw;
+    background: none;
+    box-shadow: 0px 1px 0px #9ca2a3;
+  }
+  
+  .categoriesCntr {
+    top: -1.8rem;
+    height: 1.5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .category {
+    /* outline: 1px solid red; */
+    font-size: 13px;
+  }
+
+  .dateGenreCntr {
+    width: 50%;
+  }
+
+  .descriptionBook, .addCommentCntr {
+    width: 70%;
+  }
+
+  .saveBookCntr {
+    width: 50%;
+  }
+
+  .cllctnBook {
+    width: 30%;
+  }
+
+  .saveBtn {
+    padding: 2px 10px;
+  }
+
+  .commentsCntr {
+    width: 92vw;
+  }
+}
