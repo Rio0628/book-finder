@@ -9,6 +9,8 @@ body {
   height: 100vh;
   width: 100vw;
   color: #131112;
+  outline: 1px solid red;
+  z-index: 0;
 }
 
 /* -- NAV BAR STYLES -- */
@@ -81,13 +83,14 @@ body {
 /* -- SIDEBAR STYLES -- */
 
 .sidebar {
-  position: relative;
-  bottom: 8.1rem;
+  position: absolute;
+  bottom: -0px;
   width: 40%;
   height: 100vh;
   background: linear-gradient( #f2f5ff, #dde1e8);
   box-shadow: 2px 0px 6px #dde1e8;
   outline: 1px solid #dde1e8;
+  z-index: 1;
 }
 
 .sidebarBtnOpen {
@@ -114,8 +117,8 @@ body {
 
 .categoriesCntr {
   position: relative;
-  top: 7rem;
-  height: 35%;
+  top: 4rem;
+  height: 55%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -210,12 +213,12 @@ body {
   position: relative;
   /* left: 2rem; */
   bottom: 17px;
-  width: 80%;
+  width: 105%;
   display: flex;
   justify-content: space-between;
   height: 1.5rem;
-  /* outline: 1px solid red; */
-  font-size: 12px;
+  outline: 1px solid red;
+  font-size: 11px;
   align-items: center;
   pointer-events: none;
 }

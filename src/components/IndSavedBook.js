@@ -11,6 +11,7 @@ const IndSavedBook = () => {
                 <div className='authorGenreCntr'>
                     <p className='indBookAuthor'>Author of Book</p>
                     <p className='indBookGenre'>Genre Book</p>
+                    <p className='indBookCategory'>Collection</p>
                 </div>
             </div>
 
