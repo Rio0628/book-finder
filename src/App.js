@@ -39,10 +39,10 @@ class App extends Component {
           </div>
         </div> */}
         
-        {/* <IndBookView /> */}
-        <SavedBooks />
+        <IndBookView />
+        {/* <SavedBooks /> */}
 
-        <div className='sidebar'>
+        {/* <div className='sidebar'>
           <AiOutlineClose className='sidebarBtnOpen'/>
 
           <div className='categoriesCntr'>
@@ -52,7 +52,7 @@ class App extends Component {
             <p className='category'>Favorites</p>
             <p className='category'>To Read</p>
           </div>
-        </div>
+        </div> */}
       
       </div>
     );

@@ -225,7 +225,7 @@ body {
 
 /* -- SAVED BOOKS STYLES -- */
 
-.savedBooksCntr {
+.savedBooksCntr{
   position: relative;
   bottom: 1rem;
   height: 100vh;
@@ -262,3 +262,216 @@ body {
   background: none;
   transition: .125s ease-in-out;
 }
+
+/* -- IND BOOK STYLES -- */
+
+.indBookView {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* bottom: 1rem; */
+  height: 100vh;
+  outline: 1px solid red;
+}
+
+.thumbnail {
+  position: relative;
+  top: 1rem;
+  height: 10rem;
+  width: 8rem;
+  outline: 1px solid black;
+}
+
+.titleBook {
+  position: relative;
+  top: .5rem;
+  width: 70%;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+  /* outline: 1px solid red; */
+}
+
+.authorBook {
+  position: relative;
+  bottom: 1rem;
+  font-size: 13px;
+  letter-spacing: 1px;
+  /* outline: 1px solid red; */
+}
+
+.dateGenreCntr {
+  position: relative;
+  bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  height: 1.3rem;
+  font-size: 15px;
+  align-items: center;
+  /* outline: 1px solid red; */
+}
+
+.descriptionBook {
+  position: relative;
+  bottom: 1.5rem;
+  height: 5rem;
+  width: 85%;
+  font-size: 15px;
+  padding: 5px;
+  outline: 1px solid #f2f5ff;
+}
+
+.saveBookCntr {
+  position: relative;
+  bottom: 1.5rem;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  /* outline: 1px solid black; */
+}
+
+.cllctnBook {
+  width: 50%;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.saveBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 5px;
+  color: #5c7aff;
+  outline: 1px solid #5c7aff;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.saveBtn:hover {
+  background: #5c7aff;
+  color: #fff;
+  transition: .2s ease-in-out;
+}
+
+.saveBtn:active {
+  outline: 3px solid #5c7aff;
+  color: #5c7aff;
+  background: none;
+  transition: .2s ease-in-out;
+}
+
+.addCommentCntr {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: .8rem;
+  width: 85%; 
+  /* outline: 1px solid red; */
+}
+
+.addComment {
+  outline: 1px solid #9ca2a3;
+  border: none; 
+  width: 95%;
+  font-size: 15px;
+  height: 1.2rem;
+  padding: 2px 5px;
+}
+
+.addComment:focus {
+  border: none;
+}
+
+.addBtn {
+  position: relative;
+  top: 8px;
+  width: 95%;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  padding: 1px 5px;
+  outline: 1px solid #dde1e8;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  outline: 1px solid #5c7aff;
+  color: #5c7aff;
+  transition: .1s ease-in-out;
+} 
+
+.addBtn:active {
+  outline: none;
+  background: #5c7aff;
+  color: #fff;
+  transition: .1s ease-in-out;
+}
+
+.commentsCntr {
+  position: relative;
+  top: .5rem;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 10rem;
+  outline: 1px solid black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.commentsCntr:--webkit-scrollbar {
+  width: 0px; 
+}
+
+
+
+.indComment {
+  position: relative;
+  bottom: .8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  font-size: 14px;
+  padding: 2px 0px 2px 3px;
+  outline: 1px solid black; 
+}
+
+.indComment p {
+  position: absolute;
+  right: .8rem;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0px 3px;
+  /* outline: 1px solid red; */
+  border-radius: 3px;
+}
+
+.indComment p:hover {
+  background: #d00000;
+  color: #FFF;
+  transition: .2s ease-in-out;
+}
+
+.indComment p:active {
+  background: none;
+  color: #d00000;
+  transition: .1s ease-in-out;
+}
+
+/* 
+
+            <div className='addCommentCntr'>
+                <input className='addComment' placeholder='Add Comment About Book...'/>
+
+                <div className='addBtn'>Add Comment</div>
+            </div>
+
+            <div className='commentsCntr'>
+                <p className='indComment'>T */
