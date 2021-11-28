@@ -706,3 +706,157 @@ body {
     right: -10rem;
   }
 }
+
+@media screen and (min-width: 1300px) {
+  .nav-barCntr {
+    height: 3rem;
+  }
+  
+  .sidebarBtn {
+    left: 2rem;
+    top: .3rem;
+    font-size: 25px;
+    padding: 7px;
+  }
+
+  .searchbar {
+    width: 20rem;
+    bottom: 19px;
+    font-size: 17px;
+    /* outline: 1px solid red; */
+  }
+
+  .searchBtn {
+    font-size: 25px;
+    padding: 6px 8px 8px 7px ;
+  }
+
+  .searchbarCntr {
+    right: 4rem;
+    top: .55rem;
+    height: 1.8rem;
+  }
+  
+  .sidebar {
+    height: 1.8rem;
+  }
+  
+  .categoriesCntr {
+    top: -1.8rem;
+    height: 1.8rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .category {
+    /* outline: 1px solid red; */
+    font-size: 17px;
+  }
+
+  .thumbnail {
+    top: .8rem;
+    height: 13.5rem;
+    width: 10rem;
+  }
+
+  .titleBook {
+    top: -1.8rem; 
+    font-size: 18px;
+    letter-spacing: 5px;
+  }
+
+  .authorBook {
+    top: -5rem;
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+
+  .dateGenreCntr {
+    top: -7rem;
+    font-size: 16px;
+    letter-spacing: 2px;
+    width: 35%;
+  }
+
+  .descriptionBook, .addCommentCntr {
+    top: -9rem;
+    font-size: 16px;
+    width: 55%;
+  }
+
+  .addCommentCntr { top: -12rem; }
+
+  .addComment, .addBtn {
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+
+  .addBtn { letter-spacing: 2px; }
+
+  .saveBookCntr {
+    top: -11rem;
+    width: 45%;
+  }
+
+  .cllctnBook {
+    font-size: 16px;
+    padding: 1px 5px;
+    width: 25%;
+  }
+
+  .saveBtn {
+    font-size: 15px;
+    padding: 2px 12px;
+  }
+
+  .commentsCntr {
+    top: -12rem;
+    width: 63vw;
+  }
+
+  .indComment {
+    top: 15px;
+    font-size: 15px;
+    margin-bottom: 9px;
+  }
+
+  .removeBtn {
+    padding: 4px 10px;
+    font-size: 15px;
+    top: 8px;
+    right: -17rem;
+  }
+
+  .savedBooksHeading, .searchRsltsHeading {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .thumbnailBook {
+    height: 68px;
+    width: 48px;
+    left: 16rem;
+  }
+
+  .indBookView {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mainInfoCntr {
+    left: 17rem;
+    width: 53vw;
+    /* outline: 1px solid red; */
+  }
+
+  .indBookTitle {
+    font-size: 18px;
+  }
+
+  .authorGenreCntr {
+    font-size: 15px;
+    width: 90%;
+  }
+}

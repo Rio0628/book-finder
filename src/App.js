@@ -48,8 +48,8 @@ class App extends Component {
         </div> */}
 
         
-        {/* <SearchRsltBooks /> */}
-        <IndBookView />
+        <SearchRsltBooks />
+        {/* <IndBookView /> */}
         {/* <SavedBooks /> */}
 
        
