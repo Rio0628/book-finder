@@ -471,21 +471,6 @@ body {
   transition: .1s ease-in-out;
 }
 
-/* -- HORIZONTAL SIDEBAR STYLES -- */
-
-
-
-/*  <div className='sidebarHrzntl'>
-          <AiOutlineClose className='sidebarBtnOpen'/>
-
-          <div className='categoriesCntr'>
-            <p className='category'>Search Book</p>
-            <p className='category'>Saved Books</p>
-            <p className='category'>General</p>
-            <p className='category'>Favorites</p>
-            <p className='category'>To Read</p>
-          </div> */
-
 /* -- MEDIA QUERIES -- */
 
 @media screen and (min-width: 450px) {
@@ -516,6 +501,7 @@ body {
 
   .searchbarCntr {
     top: .55rem;
+    right: 1.5rem;
     height: 1.55rem;
   }
   
@@ -569,5 +555,154 @@ body {
 
   .commentsCntr {
     width: 92vw;
+  }
+
+  .removeBtn {
+    right: -3.5rem;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .sidebarBtn {
+    top: .25rem;
+    font-size: 23px;
+    padding: 6px;
+  }
+
+  .searchbar {
+    width: 17rem;
+    bottom: 15px;
+    font-size: 16px;
+    /* outline: 1px solid red; */
+  }
+
+  .searchBtn {
+    font-size: 22px;
+    padding: 5px 7px 7px 6px ;
+  }
+
+  .searchbarCntr {
+    top: .55rem;
+    height: 1.6rem;
+  }
+  
+  .sidebar {
+    position: relative;
+    /* bottom: -40rem; */
+    left: 0px;
+    height: 1.6rem;
+    width: 100vw;
+    background: none;
+    box-shadow: 0px 1px 0px #9ca2a3;
+  }
+  
+  .categoriesCntr {
+    top: -1.8rem;
+    height: 1.5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .category {
+    /* outline: 1px solid red; */
+    font-size: 15px;
+  }
+
+  .thumbnail {
+    top: 1.2rem;
+    height: 12rem;
+    width: 9rem;
+  }
+
+  .titleBook {
+    top: -.5rem; 
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+
+  .authorBook {
+    top: -3rem;
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .dateGenreCntr {
+    top: -4.5rem;
+    font-size: 15px;
+    letter-spacing: 2px;
+    width: 40%;
+  }
+
+  .descriptionBook, .addCommentCntr {
+    top: -5rem;
+    font-size: 17px;
+    width: 60%;
+  }
+
+  .addCommentCntr { top: -6rem; }
+
+  .addComment, .addBtn {
+    font-size: 16px;
+    padding: 4px 7px;
+  }
+
+  .addBtn { letter-spacing: 2px; }
+
+  .saveBookCntr {
+    top: -6rem;
+    width: 50%;
+  }
+
+  .cllctnBook {
+    font-size: 17px;
+    padding: 1px 5px;
+    width: 30%;
+  }
+
+  .saveBtn {
+    font-size: 16px;
+    padding: 2px 10px;
+  }
+
+  .commentsCntr {
+    top: -5rem;
+    width: 80vw;
+  }
+
+  .indComment {
+    font-size: 16px;
+    margin-bottom: 9px;
+  }
+
+  .removeBtn {
+    right: -3.5rem;
+  }
+
+  .thumbnailBook {
+    height: 65px;
+    width: 45px;
+    left: 7.5rem;
+  }
+
+  .indBookView {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mainInfoCntr {
+    left: 10rem;
+    width: 60vw;
+    /* outline: 1px solid red; */
+  }
+
+  .authorGenreCntr {
+    font-size: 13px;
+    width: 90%;
+  }
+
+  .removeBtn {
+    right: -10rem;
   }
 }
