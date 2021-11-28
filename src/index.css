@@ -33,12 +33,23 @@ body {
   cursor: pointer;
 }
 
-.sidebarBtn:hover {
+.searchBtnCls {
+  position: relative;
+  right: .5rem;
+  top: .5rem;
+  font-size: 22px;
+  /* outline: 1px solid black; */
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebarBtn:hover, .searchBtnCls:hover {
   background: #dde1e8;
   transition: .125s ease-in-out;
 }
 
-.sidebarBtn:active {
+.sidebarBtn:active, .searchBtnCls:active {
   background: none;
   outline: 1px solid #dde1e8;
   transition: .2s ease-in-out;;
@@ -489,6 +500,12 @@ body {
     padding: 5px;
   }
 
+  .searchBtnCls {
+    top: .3rem;
+    font-size: 24px;
+    padding: 5px;
+  }
+
   .searchbar {
     width: 15rem;
     bottom: 15px;
@@ -577,6 +594,12 @@ body {
   .sidebarBtn {
     top: .25rem;
     font-size: 23px;
+    padding: 6px;
+  }
+
+  .searchBtnCls {
+    top: .25rem;
+    font-size: 26px;
     padding: 6px;
   }
 
@@ -739,6 +762,13 @@ body {
     padding: 7px;
   }
 
+  .searchBtnCls {
+    right: 2rem;
+    top: .3rem;
+    font-size: 26px;
+    padding: 6px;
+  }
+
   .searchbar {
     width: 20rem;
     bottom: 19px;
@@ -766,13 +796,13 @@ body {
     width: 100vw;
     background: none;
     box-shadow: 0px 1px 0px #9ca2a3;
-    transition: .2s ease-out;
+    transition: .05s all;
   }
 
   .sidebar.active {
     position: relative;
     top: 0;
-    transition: .2s ease-in;
+    transition: .05s all;
     opacity: 1;
   }
   

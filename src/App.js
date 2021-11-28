@@ -11,23 +11,36 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sidebarOn: false,      
+      sidebarOn: false,
+      searchOn: false,
+      indBookViewOn: false,      
     }
   }
   
   render () {
     
-    const handleSidebar = () => {
-      this.setState({ sidebarOn: !this.state.sidebarOn })
+    const handleSidebar = async () => {
+      await this.setState({ sidebarOn: !this.state.sidebarOn })
 
-      if (this.state.sidebarOn) {
+      if (this.state.sidebarOn === true ) {
         this.setState({ sidebarStatus: 'active'});
       }
       else { this.setState({ sidebarStatus: '' } )};
     }
 
+    const handleSearchbar = () => {
+      this.setState({ searchOn: !this.state.searchOn });
+    }
+
+    const onClick = (e) => {
+      console.log(e.target.className)
+
+      
+    } 
+
 
     console.log(this.state.sidebarOn)
+    console.log(this.state.searchOn)
     // Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => console.log(data) );
 
     return (
@@ -35,12 +48,14 @@ class App extends Component {
 
         <div className='nav-barCntr'>
           <AiOutlineMenu className='sidebarBtn' onClick={handleSidebar}/>
-          {/* <BiSearchAlt className='searchBtnCls'/> */}
-
-          <div className='searchbarCntr'>
-            <input className='searchbar' placeholder='Search Book...'></input>
-            <BiSearchAlt className='searchBtn'/>
-          </div>
+          
+          {this.state.searchOn ? 
+            <div className='searchbarCntr'>
+              <input className='searchbar' placeholder='Search Book...'></input>
+              <BiSearchAlt className='searchBtn' onClick={handleSearchbar}/>
+            </div>
+          :  <BiSearchAlt className='searchBtnCls' onClick={handleSearchbar}/> }
+         
         </div>
 
         <div className={'sidebar ' + this.state.sidebarStatus }>
