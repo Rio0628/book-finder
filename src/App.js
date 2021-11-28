@@ -8,15 +8,33 @@ import SavedBooks from './components/SavedBooks';
 import SearchRsltBooks from './components/SearchRsltBooks';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      sidebarOn: false,      
+    }
+  }
+  
   render () {
     
+    const handleSidebar = () => {
+      this.setState({ sidebarOn: !this.state.sidebarOn })
+
+      if (this.state.sidebarOn) {
+        this.setState({ sidebarStatus: 'active'});
+      }
+      else { this.setState({ sidebarStatus: '' } )};
+    }
+
+
+    console.log(this.state.sidebarOn)
     // Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => console.log(data) );
 
     return (
       <div className="container">
 
         <div className='nav-barCntr'>
-          <AiOutlineMenu className='sidebarBtn'/>
+          <AiOutlineMenu className='sidebarBtn' onClick={handleSidebar}/>
           {/* <BiSearchAlt className='searchBtnCls'/> */}
 
           <div className='searchbarCntr'>
@@ -25,8 +43,8 @@ class App extends Component {
           </div>
         </div>
 
-        <div className='sidebar active'>
-          <AiOutlineClose className='sidebarBtnOpen'/>
+        <div className={'sidebar ' + this.state.sidebarStatus }>
+          <AiOutlineClose className='sidebarBtnOpen' onClick={handleSidebar}/>
 
           <div className='categoriesCntr'>
             <p className='category'>Search Book</p>

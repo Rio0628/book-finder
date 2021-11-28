@@ -92,10 +92,12 @@ body {
   box-shadow: 2px 0px 6px #dde1e8;
   outline: 1px solid #dde1e8;
   z-index: 1;
+  transition: .2s ease-out;
 }
 
 .sidebar.active {
   left: 0rem;
+  transition: .2s ease-in;
 }
 
 .sidebarBtnOpen {
@@ -510,13 +512,22 @@ body {
   }
   
   .sidebar {
-    position: relative;
-    /* bottom: -40rem; */
+    opacity: 0;
+    position: absolute;
+    top: -50rem;
     left: 0px;
     height: 1.5rem;
     width: 100vw;
     background: none;
     box-shadow: 0px 1px 0px #9ca2a3;
+    transition: .2s ease-out;
+  }
+
+  .sidebar.active {
+    position: relative;
+    top: 0;
+    transition: .2s ease-in;
+    opacity: 1;
   }
   
   .categoriesCntr {
@@ -585,15 +596,24 @@ body {
     top: .55rem;
     height: 1.6rem;
   }
-  
+
   .sidebar {
-    position: relative;
-    /* bottom: -40rem; */
+    opacity: 0;
+    position: absolute;
+    top: -50rem;
     left: 0px;
     height: 1.6rem;
     width: 100vw;
     background: none;
     box-shadow: 0px 1px 0px #9ca2a3;
+    transition: .2s ease-out;
+  }
+
+  .sidebar.active {
+    position: relative;
+    top: 0;
+    transition: .2s ease-in;
+    opacity: 1;
   }
   
   .categoriesCntr {
@@ -736,9 +756,24 @@ body {
     top: .55rem;
     height: 1.8rem;
   }
-  
+
   .sidebar {
+    opacity: 0;
+    position: absolute;
+    top: -50rem;
+    left: 0px;
     height: 1.8rem;
+    width: 100vw;
+    background: none;
+    box-shadow: 0px 1px 0px #9ca2a3;
+    transition: .2s ease-out;
+  }
+
+  .sidebar.active {
+    position: relative;
+    top: 0;
+    transition: .2s ease-in;
+    opacity: 1;
   }
   
   .categoriesCntr {
