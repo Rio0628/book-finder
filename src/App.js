@@ -12,9 +12,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      previewOn: true,
       sidebarOn: false,
       searchOn: false,
-      searchView: true,
+      searchView: false,
       savedBooks: false,
       indBookViewOn: false,      
     }
@@ -59,12 +60,14 @@ class App extends Component {
       // console.log(updatedList)
 
       if (this.state.indBookViewOn) {this.setState({ searchOn: !this.state.searchOn });}
+      this.setState({ previewOn: false });
       this.setState({ indBookViewOn: false });
       this.setState({ savedBooksView: false });
       this.setState({ searchView: true });
     }
 
     const setSavedBooksView = () => {
+      this.setState({ previewOn: false });
       this.setState({ indBookViewOn: false });
       this.setState({ searchView: false });
       this.setState({ savedBooksView: true });
@@ -78,7 +81,7 @@ class App extends Component {
         if (e.target.id === 'searchBook') {
           this.setState({ indBookViewOn: false });
           this.setState({ savedBooksView: false });
-          this.setState({ searchView: true });
+          this.setState({ previewOn: true });
         }
         if (e.target.id === 'savedBooks') {
           setSavedBooksView();
@@ -95,6 +98,7 @@ class App extends Component {
       }
 
       if (e.target.className === 'indBookCntr') {
+        this.setState({ previewOn: false });
         this.setState({ savedBooksView: false });
         this.setState({ searchView: false });
         this.setState({ indBookViewOn: true });
@@ -118,6 +122,13 @@ class App extends Component {
               <BiSearchAlt className='searchBtn' onClick={searchBooks}/>
             </div>
           : null }
+
+          { this.state.previewOn ? 
+            <div className='searchbarCntr'>
+              <input className='searchbar' placeholder={ this.state.searchView ? "Search Book..." : this.state.savedBooksView ? 'Search Saved Book...' : null} onChange={onChange}></input>
+              <BiSearchAlt className='searchBtn' onClick={searchBooks}/>
+            </div>
+          : null }
        
 
         </div>
@@ -134,8 +145,8 @@ class App extends Component {
           </div>
         </div>
         
-        
-        { this.state.searchView ? <SearchRsltBooks onClick={onClick} /> : null }
+        { this.state.previewOn ? <p className='previewMsg'>Search book or view <span>Saved Books</span></p> : null }
+        { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.resultBooks} onClick={onClick} /> : null }
         { this.state.savedBooksView ?  <SavedBooks onClick={onClick}/> : null }
         { this.state.indBookViewOn ? <IndBookView onClick={onClick} onChange={onChange}/> : null }
       

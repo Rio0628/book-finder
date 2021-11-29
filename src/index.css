@@ -6,11 +6,10 @@ body {
 }
 
 .container {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   color: #131112;
-  outline: 1px solid red;
-  z-index: 0;
+  /* outline: 1px solid red; */
 }
 
 /* -- NAV BAR STYLES -- */
@@ -163,6 +162,8 @@ body {
   position: relative;
   bottom: 1rem;
   height: 100vh;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
   /* outline: 1px solid red; */
 }
 
@@ -179,7 +180,7 @@ body {
   position: relative;
   bottom: 1rem;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   /* outline: 1px solid red; */
 }
 

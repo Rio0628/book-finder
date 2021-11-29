@@ -4,13 +4,13 @@ import IndSearchBook from './IndSearchBook';
 const SearchRsltBooks = (props) => {
   let indBookCntr = [];  
 
-  for (let i = 0; i < 7; i++) {
-    indBookCntr.push( <IndSearchBook onClick={props.onClick} key={'IndSearchBook ' + i}/> );
+  for (let i = 0; i < props.resultBooks.length; i++) {
+    indBookCntr.push( <IndSearchBook bookInfo={props.resultBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
   }
   
   return (
     <div className='searchBooksCntr'>
-      <p className='searchRsltsHeading'>Results: Name Of Book</p>
+      <p className='searchRsltsHeading'>Results: {props.searchInput}</p>
 
       <div className='booksCntr'>
         { indBookCntr }
