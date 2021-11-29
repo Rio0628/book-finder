@@ -56,7 +56,7 @@ class App extends Component {
         updatedList.push(object)
       }
 
-      this.setState({ resultBooks: updatedList });
+      this.setState({ currentBooks: updatedList });
       // console.log(updatedList)
 
       if (this.state.indBookViewOn) {this.setState({ searchOn: !this.state.searchOn });}
@@ -97,7 +97,14 @@ class App extends Component {
         }
       }
 
+      if (e.target.className === 'savedBkBtn') {
+        setSavedBooksView();
+      }
+
       if (e.target.className === 'indBookCntr') {
+        console.log(e.target.getAttribute('book'))
+        this.setState({ selectedBook: this.state.currentBooks[e.target.getAttribute('book')] });
+
         this.setState({ previewOn: false });
         this.setState({ savedBooksView: false });
         this.setState({ searchView: false });
@@ -106,7 +113,8 @@ class App extends Component {
     } 
     
     
-    console.log(this.state.resultBooks)
+    console.log(this.state.currentBooks)
+    console.log(this.state.selectedBook)
 
     return (
       <div className="container">
@@ -145,10 +153,10 @@ class App extends Component {
           </div>
         </div>
         
-        { this.state.previewOn ? <p className='previewMsg'>Search book or view <span>Saved Books</span></p> : null }
-        { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.resultBooks} onClick={onClick} /> : null }
+        { this.state.previewOn ? <p className='previewMsg'>Search book or view <span className='savedBkBtn' onClick={onClick}>Saved Books</span></p> : null }
+        { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
         { this.state.savedBooksView ?  <SavedBooks onClick={onClick}/> : null }
-        { this.state.indBookViewOn ? <IndBookView onClick={onClick} onChange={onChange}/> : null }
+        { this.state.indBookViewOn ? <IndBookView book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
       
       </div>
     );

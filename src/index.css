@@ -12,6 +12,31 @@ body {
   /* outline: 1px solid red; */
 }
 
+.previewMsg {
+  position: relative;
+  top: 5rem;
+  font-size: 23px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  /* outline: 1px solid red; */
+  text-align: center;
+}
+
+.previewMsg span {
+  color: #5c7aff;
+  cursor: pointer;
+}
+
+.previewMsg span:hover {
+
+  text-decoration: underline;
+}
+
+.previewMsg span:active {
+
+  color: #103cff;
+}
+
 /* -- NAV BAR STYLES -- */
 
 .nav-barCntr {
@@ -344,6 +369,16 @@ body {
   font-size: 15px;
   padding: 5px;
   outline: 1px solid #f2f5ff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.descriptionBook::-webkit-scrollbar {
+  width: 2px;
+}
+
+.descriptionBook::-webkit-scrollbar-thumb {
+  background: red;
 }
 
 .saveBookCntr {
@@ -495,6 +530,8 @@ body {
     position: relative;
     left: 10rem;
   }
+
+  .previewMsg { letter-spacing: 4px; } 
 }
 
 @media screen and (min-width: 600px) {

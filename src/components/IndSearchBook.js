@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IndSearchBook = (props) => {
-
+    const book = props.bookInfo;
     console.log(props.bookInfo)
 
     const authorsUpdt = () => {
@@ -11,7 +11,7 @@ const IndSearchBook = (props) => {
     }
 
     return (
-        <div className='indBookCntr' onClick={props.onClick}>
+        <div className='indBookCntr' book={props.number} onClick={props.onClick}>
             <img className='thumbnailBook' src={props.bookInfo.thumbnail} alt='thumbain book'></img>
 
             <div className='mainInfoCntr'>

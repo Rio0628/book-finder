@@ -1,23 +1,31 @@
 import React from 'react';
 
 const IndBookView = (props) => {
+    let commentsCntr = [];
+    const changeCategory = () => {
+        if (props.book.savedGroup) {
+            return props.book.savedGroup
+        }
+        else return 'General'
+    }
+    
     return (
         <div className='indBookView'>
 
-            <div className='thumbnail'></div>
+            <img className='thumbnail' src={props.book.thumbnail} alt='thumbnail'></img>
 
-            <p className='titleBook'>Title For Book</p>
-            <p className='authorBook'>Author</p>
+            <p className='titleBook'>{props.book.title}</p>
+            <p className='authorBook'>{props.book.author}</p>
         
             <div className='dateGenreCntr'>
-                <p className='genreBook'>Genre</p>
-                <p className='publishDateBook'>00/00/0000</p>
+                <p className='genreBook'>{props.book.category}</p>
+                <p className='publishDateBook'>{props.book.publishDate}</p>
             </div>
 
-            <p className='descriptionBook'>This is the description of the book </p>
+            <p className='descriptionBook'>{props.book.description}</p>
 
             <div className='saveBookCntr'>
-                <select className='cllctnBook' onChange={props.onChange}>
+                <select className='cllctnBook' defaultValue={changeCategory()} onChange={props.onChange}>
                     <option>General</option>
                     <option>Favorite</option>
                     <option>To Read</option>

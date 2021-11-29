@@ -5,7 +5,7 @@ const SearchRsltBooks = (props) => {
   let indBookCntr = [];  
 
   for (let i = 0; i < props.resultBooks.length; i++) {
-    indBookCntr.push( <IndSearchBook bookInfo={props.resultBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
+    indBookCntr.push( <IndSearchBook number={i} bookInfo={props.resultBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
   }
   
   return (
