@@ -1,22 +1,23 @@
 import React from 'react';
 import IndSearchBook from './IndSearchBook';
 
-const SearchRsltBooks = () => {
-    return (
-        <div className='searchBooksCntr'>
-          <p className='searchRsltsHeading'>Results: Name Of Book</p>
+const SearchRsltBooks = (props) => {
+  let indBookCntr = [];  
 
-          <div className='booksCntr'>
-                <IndSearchBook />
-                <IndSearchBook />
-                <IndSearchBook />
-                <IndSearchBook />
-                <IndSearchBook />
-                <IndSearchBook />
-          </div>
+  for (let i = 0; i < 7; i++) {
+    indBookCntr.push( <IndSearchBook onClick={props.onClick} key={'IndSearchBook ' + i}/> );
+  }
+  
+  return (
+    <div className='searchBooksCntr'>
+      <p className='searchRsltsHeading'>Results: Name Of Book</p>
+
+      <div className='booksCntr'>
+        { indBookCntr }
+      </div>
           
-        </div>
-    );
+    </div>
+  );
 }
 
 export default SearchRsltBooks;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const IndSearchBook = () => {
+const IndSearchBook = (props) => {
     return (
-        <div className='indBookCntr'>
+        <div className='indBookCntr' onClick={props.onClick}>
             <div className='thumbnailBook'></div>
 
             <div className='mainInfoCntr'>

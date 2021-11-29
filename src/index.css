@@ -205,12 +205,14 @@ body {
   height: 60px;
   width: 40px;
   outline: 1px solid black;
+  pointer-events: none;
 }
 
 .mainInfoCntr {
   position: relative;
   left: 1.5rem;
   width: 70vw;
+  pointer-events: none;
   /* outline: 1px solid red; */
 }
 
