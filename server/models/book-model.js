@@ -8,7 +8,7 @@ const Book = new Schema ({
     publishDate: { type: String, required: true },
     category: { type: String, required: true },
     description: { type: String, required: true },
-    comments: { type: String, required: true },
+    comments: { type: [String], required: true },
     savedGroup: { type: String, required: true },
 }, { timestamps: true } );
 

@@ -45,8 +45,18 @@ class App extends Component {
       this.setState({ searchOn: !this.state.searchOn });
     }
 
-    const searchBooks = () => {
-      
+    const searchBooks = async () => {
+      let items, updatedList = [];
+      await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => items = data.data.items );
+
+      for (let i = 0; i < items.length; i++) {
+        const object = { thumbnail: items[i].volumeInfo.imageLinks.thumbnail, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [''], savedGroup: ''};
+
+        updatedList.push(object)
+      }
+
+      this.setState({ resultBooks: updatedList });
+      // console.log(updatedList)
 
       if (this.state.indBookViewOn) {this.setState({ searchOn: !this.state.searchOn });}
       this.setState({ indBookViewOn: false });
@@ -92,7 +102,7 @@ class App extends Component {
     } 
     
     
-    // Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => console.log(data) );
+    console.log(this.state.resultBooks)
 
     return (
       <div className="container">
