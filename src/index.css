@@ -99,7 +99,8 @@ body {
   left: -30rem; 
   width: 40%;
   height: 100vh;
-  background: linear-gradient( #f2f5ff, #dde1e8);
+  background: #fff;
+  /* background: linear-gradient( #f2f5ff, #dde1e8); */
   box-shadow: 2px 0px 6px #dde1e8;
   outline: 1px solid #dde1e8;
   z-index: 1;
@@ -114,7 +115,7 @@ body {
 .sidebarBtnOpen {
   position: relative;
   left: 6rem;
-  top: 1rem;
+  top: 2.2rem;
   font-size: 20px;
   /* outline: 1px solid black; */
   padding: 3px;

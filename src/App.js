@@ -4,6 +4,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
 import IndBookView from './components/IndBookView';
+import IndBookViewSB from './components/IndBookViewSB';
 import SavedBooks from './components/SavedBooks';
 import SearchRsltBooks from './components/SearchRsltBooks';
 
@@ -21,6 +22,16 @@ class App extends Component {
   
   render () {
     
+    const onChange = (e) => {
+      console.log(e.target)
+
+      if (e.target.className === 'searchbar') { this.setState({ searchInput: e.target.value }); };
+
+      if (e.target.className === 'addComment') { this.setState({ addCommentInput: e.target.value }); };
+
+      if (e.target.className === 'cllctnBook') { this.setState({ cllctnBookInput: e.target.value }); };
+    }
+
     const handleSidebar = async () => {
       await this.setState({ sidebarOn: !this.state.sidebarOn })
 
@@ -35,7 +46,9 @@ class App extends Component {
     }
 
     const searchBooks = () => {
-      this.setState({ searchOn: !this.state.searchOn });
+      
+
+      if (this.state.indBookViewOn) {this.setState({ searchOn: !this.state.searchOn });}
       this.setState({ indBookViewOn: false });
       this.setState({ savedBooksView: false });
       this.setState({ searchView: true });
@@ -47,10 +60,11 @@ class App extends Component {
       this.setState({ savedBooksView: true });
     };
 
-    const onClick = (e) => {
+    const onClick = async (e) => {
       console.log(e.target.className)
 
       if (e.target.className === 'category') {
+        this.setState({ sidebarStatus: '' });
         if (e.target.id === 'searchBook') {
           this.setState({ indBookViewOn: false });
           this.setState({ savedBooksView: false });
@@ -76,10 +90,8 @@ class App extends Component {
         this.setState({ indBookViewOn: true });
       }
     } 
-
     
-    console.log(this.state.sidebarOn)
-    console.log(this.state.searchOn)
+    
     // Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => console.log(data) );
 
     return (
@@ -88,13 +100,16 @@ class App extends Component {
         <div className='nav-barCntr'>
           <AiOutlineMenu className='sidebarBtn' onClick={handleSidebar}/>
           
-          {this.state.searchOn ? 
+          { this.state.indBookViewOn ? <IndBookViewSB onClick={onClick} onChange={onChange} searchOn={this.state.searchOn} handleSearchbar={handleSearchbar} searchBooks={searchBooks}/> : null}
+
+         { this.state.searchView || this.state.savedBooksView ? 
             <div className='searchbarCntr'>
-              <input className='searchbar' placeholder='Search Book...'></input>
+              <input className='searchbar' placeholder={ this.state.searchView ? "Search Book..." : this.state.savedBooksView ? 'Search Saved Book...' : null} onChange={onChange}></input>
               <BiSearchAlt className='searchBtn' onClick={searchBooks}/>
             </div>
-          :  <BiSearchAlt className='searchBtnCls' onClick={handleSearchbar}/> }
-         
+          : null }
+       
+
         </div>
 
         <div className={'sidebar ' + this.state.sidebarStatus }>
@@ -112,8 +127,7 @@ class App extends Component {
         
         { this.state.searchView ? <SearchRsltBooks onClick={onClick} /> : null }
         { this.state.savedBooksView ?  <SavedBooks onClick={onClick}/> : null }
-        { this.state.indBookViewOn ? <IndBookView onClick={onClick}/> : null }
-        {/* <SavedBooks onClick={onClick}/> */}
+        { this.state.indBookViewOn ? <IndBookView onClick={onClick} onChange={onChange}/> : null }
       
       </div>
     );
