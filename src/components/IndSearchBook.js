@@ -1,7 +1,6 @@
 import React from 'react';
 
 const IndSearchBook = (props) => {
-    const book = props.bookInfo;
     console.log(props.bookInfo)
 
     const authorsUpdt = () => {

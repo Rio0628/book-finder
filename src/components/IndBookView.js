@@ -2,6 +2,13 @@ import React from 'react';
 
 const IndBookView = (props) => {
     let commentsCntr = [];
+
+    console.log(props.book.comments)
+    
+    for (let i = 0; i < props.book.comments.length; i++ ) {
+        commentsCntr.push(  <div className='indComment'>{props.book.comments[i]}<p className='removeCmmntBtn' comment={props.book.comments[i]}>X</p></div> );
+    }
+
     const changeCategory = () => {
         if (props.book.savedGroup) {
             return props.book.savedGroup

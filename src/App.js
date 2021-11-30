@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import api from './api';
 import { AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
@@ -46,12 +47,14 @@ class App extends Component {
       this.setState({ searchOn: !this.state.searchOn });
     }
 
+    api.getAllBooks().then(books => console.log(books))
+
     const searchBooks = async () => {
       let items, updatedList = [];
       await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => items = data.data.items );
 
       for (let i = 0; i < items.length; i++) {
-        const object = { thumbnail: items[i].volumeInfo.imageLinks.thumbnail, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [''], savedGroup: ''};
+        const object = { thumbnail: items[i].volumeInfo.imageLinks.thumbnail, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
 
         updatedList.push(object)
       }
