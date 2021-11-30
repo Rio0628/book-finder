@@ -2,20 +2,20 @@ import React from 'react';
 
 const IndSavedBook = (props) => {
     return (
-        <div className='indBookCntr' onClick={props.onClick}>
-            <div className='thumbnailBook'></div>
+        <div className='indBookCntr' id='indBookSaved' book={props.book._id} onClick={props.onClick}>
+            <img className='thumbnailBook' src={props.book.thumbail} alt='Thumbnail Book'></img>
 
             <div className='mainInfoCntr'>
-                <p className='indBookTitle'>Title of Book</p>
+                <p className='indBookTitle'>{props.book.title}</p>
 
                 <div className='authorGenreCntr'>
-                    <p className='indBookAuthor'>Author of Book</p>
-                    <p className='indBookGenre'>Genre Book</p>
-                    <p className='indBookCategory'>Collection</p>
+                    <p className='indBookAuthor'>{props.book.author}</p>
+                    <p className='indBookGenre'>{props.book.category}</p>
+                    <p className='indBookCategory'>{props.book.savedGroup}</p>
                 </div>
             </div>
 
-            <div className='removeBtn'>Remove</div>
+            <div className='removeBtn' book={props.book._id}>Remove</div>
 
          
         </div>

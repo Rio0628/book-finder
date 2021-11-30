@@ -3,10 +3,10 @@ import React from 'react';
 const IndBookView = (props) => {
     let commentsCntr = [];
 
-    console.log(props.book.comments)
+    // console.log(props.book.comments)
     
     for (let i = 0; i < props.book.comments.length; i++ ) {
-        commentsCntr.push(  <div className='indComment'>{props.book.comments[i]}<p className='removeCmmntBtn' comment={props.book.comments[i]}>X</p></div> );
+        commentsCntr.push(  <div className='indComment' key={'Comment ' + i}>{props.book.comments[i]}<p className='removeCmmntBtn' comment={props.book.comments[i]}>X</p></div> );
     }
 
     const changeCategory = () => {
@@ -48,9 +48,7 @@ const IndBookView = (props) => {
             </div>
 
             <div className='commentsCntr'>
-                <div className='indComment'>This is a comment added by an user. <p onClick={props.onClick}>X</p></div>
-                <div className='indComment'>This is a comment added by an user. <p>X</p></div>
-                <div className='indComment'>This is a comment added by an user. <p>X</p></div>
+                {commentsCntr}
             </div>
         </div>
     );

@@ -47,7 +47,7 @@ class App extends Component {
       this.setState({ searchOn: !this.state.searchOn });
     }
 
-    api.getAllBooks().then(books => console.log(books))
+    // api.getAllBooks().then(books => console.log(books.data.data))
 
     const searchBooks = async () => {
       let items, updatedList = [];
@@ -87,6 +87,10 @@ class App extends Component {
           this.setState({ previewOn: true });
         }
         if (e.target.id === 'savedBooks') {
+          let books;
+          await api.getAllBooks().then(books => books = books.data.data )
+          console.log(books)
+          console.log('mario')
           setSavedBooksView();
         }
         if (e.target.id === 'general') {
@@ -101,10 +105,22 @@ class App extends Component {
       }
 
       if (e.target.className === 'savedBkBtn') {
+        let books;
+        await api.getAllBooks().then(allbooks => books = allbooks.data.data)
+        this.setState({ currentBooks: books});
         setSavedBooksView();
       }
 
-      if (e.target.className === 'indBookCntr') {
+      if (e.target.id === 'indBookSaved') {
+        await api.getBookById(e.target.getAttribute('book')).then(book => this.setState({ selectedBook: book.data.data }) )
+
+        this.setState({ previewOn: false });
+        this.setState({ savedBooksView: false });
+        this.setState({ searchView: false });
+        this.setState({ indBookViewOn: true });
+      }
+
+      if (e.target.id === 'indBookSearch') {
         console.log(e.target.getAttribute('book'))
         this.setState({ selectedBook: this.state.currentBooks[e.target.getAttribute('book')] });
 
@@ -116,7 +132,7 @@ class App extends Component {
     } 
     
     
-    console.log(this.state.currentBooks)
+    // console.log(this.state.currentBooks)
     console.log(this.state.selectedBook)
 
     return (
@@ -136,7 +152,7 @@ class App extends Component {
 
           { this.state.previewOn ? 
             <div className='searchbarCntr'>
-              <input className='searchbar' placeholder={ this.state.searchView ? "Search Book..." : this.state.savedBooksView ? 'Search Saved Book...' : null} onChange={onChange}></input>
+              <input className='searchbar' placeholder="Search Book..." onChange={onChange}></input>
               <BiSearchAlt className='searchBtn' onClick={searchBooks}/>
             </div>
           : null }
@@ -158,7 +174,7 @@ class App extends Component {
         
         { this.state.previewOn ? <p className='previewMsg'>Search book or view <span className='savedBkBtn' onClick={onClick}>Saved Books</span></p> : null }
         { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
-        { this.state.savedBooksView ?  <SavedBooks onClick={onClick}/> : null }
+        { this.state.savedBooksView ?  <SavedBooks currentBooks={this.state.currentBooks} onClick={onClick}/> : null }
         { this.state.indBookViewOn ? <IndBookView book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
       
       </div>

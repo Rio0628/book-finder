@@ -10,7 +10,7 @@ const IndSearchBook = (props) => {
     }
 
     return (
-        <div className='indBookCntr' book={props.number} onClick={props.onClick}>
+        <div className='indBookCntr' id='indBookSearch'  book={props.number} onClick={props.onClick}>
             <img className='thumbnailBook' src={props.bookInfo.thumbnail} alt='thumbain book'></img>
 
             <div className='mainInfoCntr'>

@@ -4,8 +4,9 @@ import IndSavedBook from './IndSavedBook';
 const SavedBooks = (props) => {
     let indBookCntr = [];  
 
-    for (let i = 0; i < 7; i++) {
-      indBookCntr.push( <IndSavedBook onClick={props.onClick} key={'IndSearchBook ' + i}/> );
+    for (let i = 0; i < props.currentBooks.length; i++) {
+      
+      indBookCntr.push( <IndSavedBook book={props.currentBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
     }
 
     return (
