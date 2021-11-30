@@ -3,7 +3,7 @@ import React from 'react';
 const IndBookView = (props) => {
     let commentsCntr = [];
 
-    // console.log(props.book.comments)
+    console.log(props.book)
     
     for (let i = 0; i < props.book.comments.length; i++ ) {
         commentsCntr.push(  <div className='indComment' key={'Comment ' + i}>{props.book.comments[i]}<p className='removeCmmntBtn' comment={props.book.comments[i]}>X</p></div> );
@@ -14,6 +14,11 @@ const IndBookView = (props) => {
             return props.book.savedGroup
         }
         else return 'General'
+    }
+
+    const setChangeClass = () => {
+        if (props.isSaved) { return ' saved'}
+        else return ' ';
     }
     
     return (
@@ -38,7 +43,7 @@ const IndBookView = (props) => {
                     <option>To Read</option>
                 </select>
 
-                <div className='saveBtn' onClick={props.onClick}>Save Book</div>
+                <div className={'saveBtn' + setChangeClass()} onClick={props.onClick}>{props.isSaved ? 'Book Saved' : 'Save Book'}</div>
             </div>
 
             <div className='addCommentCntr'>

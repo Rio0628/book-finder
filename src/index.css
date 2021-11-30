@@ -406,6 +406,12 @@ body {
   cursor: pointer;
 }
 
+.saveBtn.saved {
+  color: #fff;
+  background: #5c7aff;
+  pointer-events: none;
+}
+
 .saveBtn:hover {
   background: #5c7aff;
   color: #fff;

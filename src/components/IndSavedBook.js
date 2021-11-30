@@ -3,7 +3,7 @@ import React from 'react';
 const IndSavedBook = (props) => {
     return (
         <div className='indBookCntr' id='indBookSaved' book={props.book._id} onClick={props.onClick}>
-            <img className='thumbnailBook' src={props.book.thumbail} alt='Thumbnail Book'></img>
+            <img className='thumbnailBook' src={props.book.thumbnail} alt='Thumbnail Book'></img>
 
             <div className='mainInfoCntr'>
                 <p className='indBookTitle'>{props.book.title}</p>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IndSearchBook = (props) => {
-    console.log(props.bookInfo)
+    // console.log(props.bookInfo)
 
     const authorsUpdt = () => {
         if (props.bookInfo.author.length === 1) { return `${props.bookInfo.author}`};

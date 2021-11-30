@@ -18,6 +18,7 @@ class App extends Component {
       searchOn: false,
       searchView: false,
       savedBooks: false,
+      isSaved: false,
       indBookViewOn: false,      
     }
   }
@@ -88,9 +89,9 @@ class App extends Component {
         }
         if (e.target.id === 'savedBooks') {
           let books;
-          await api.getAllBooks().then(books => books = books.data.data )
+          await api.getAllBooks().then(allbooks => books = allbooks.data.data )
           console.log(books)
-          console.log('mario')
+          this.setState({ currentBooks: books })
           setSavedBooksView();
         }
         if (e.target.id === 'general') {
@@ -113,6 +114,8 @@ class App extends Component {
 
       if (e.target.id === 'indBookSaved') {
         await api.getBookById(e.target.getAttribute('book')).then(book => this.setState({ selectedBook: book.data.data }) )
+        
+        this.setState({ isSaved: true });
 
         this.setState({ previewOn: false });
         this.setState({ savedBooksView: false });
@@ -121,8 +124,17 @@ class App extends Component {
       }
 
       if (e.target.id === 'indBookSearch') {
-        console.log(e.target.getAttribute('book'))
+        // console.log(e.target.getAttribute('book'))
         this.setState({ selectedBook: this.state.currentBooks[e.target.getAttribute('book')] });
+        
+        let books;
+        await api.getAllBooks().then(allBooks => books = allBooks.data.data)
+        console.log(books)
+        
+        const finalBook = books.filter(book => book.author[0] === this.state.selectedBook.author[0] && book.title === this.state.selectedBook.title && book.publishDate === this.state.selectedBook.publishDate);
+
+        if (finalBook[0]) { this.setState({ isSaved: true }); }
+        // console.log(finalBook);
 
         this.setState({ previewOn: false });
         this.setState({ savedBooksView: false });
@@ -131,9 +143,9 @@ class App extends Component {
       }
     } 
     
-    
+    console.log(this.state.isSaved)
     // console.log(this.state.currentBooks)
-    console.log(this.state.selectedBook)
+    // console.log(this.state.selectedBook)
 
     return (
       <div className="container">
@@ -175,7 +187,7 @@ class App extends Component {
         { this.state.previewOn ? <p className='previewMsg'>Search book or view <span className='savedBkBtn' onClick={onClick}>Saved Books</span></p> : null }
         { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
         { this.state.savedBooksView ?  <SavedBooks currentBooks={this.state.currentBooks} onClick={onClick}/> : null }
-        { this.state.indBookViewOn ? <IndBookView book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
+        { this.state.indBookViewOn ? <IndBookView isSaved={this.state.isSaved} book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
       
       </div>
     );
