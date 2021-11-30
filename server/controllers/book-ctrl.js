@@ -68,7 +68,7 @@ deleteBook = async (req, res) => {
     await Book.findOneAndDelete({ _id: req.params.id }, (err, book) => {
         if (err) { return res.status(400).json({ success: false, error: err}) }
     
-        if (!movie) {
+        if (!book) {
             return res.status(404).json({ success: false, error: "Book not found" })
         }
 

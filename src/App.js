@@ -19,7 +19,8 @@ class App extends Component {
       searchView: false,
       savedBooks: false,
       isSaved: false,
-      indBookViewOn: false,      
+      indBookViewOn: false,  
+      cllctnBookInput: 'General',    
     }
   }
   
@@ -105,6 +106,22 @@ class App extends Component {
         }
       }
 
+      if (e.target.id === 'saveBtn') {
+        const book = this.state.selectedBook;
+        book.savedGroup = this.state.cllctnBookInput;
+        console.log(book)
+        await api.insertBook(book).then( book => alert('Book Saved!') );
+
+        this.setState({ isSaved: true });
+      }
+
+      if (e.target.className === 'removeBtn') {
+        const book = e.target.getAttribute('book');
+        await api.deleteBookById(book).then(book => alert('Book Removed'));
+
+        await api.getAllBooks().then( books => this.setState({ currentBooks: books.data.data }));
+      }
+
       if (e.target.className === 'savedBkBtn') {
         let books;
         await api.getAllBooks().then(allbooks => books = allbooks.data.data)
@@ -129,11 +146,12 @@ class App extends Component {
         
         let books;
         await api.getAllBooks().then(allBooks => books = allBooks.data.data)
-        console.log(books)
+        // console.log(books)
         
         const finalBook = books.filter(book => book.author[0] === this.state.selectedBook.author[0] && book.title === this.state.selectedBook.title && book.publishDate === this.state.selectedBook.publishDate);
 
         if (finalBook[0]) { this.setState({ isSaved: true }); }
+        else this.setState({ isSaved: false });
         // console.log(finalBook);
 
         this.setState({ previewOn: false });
@@ -141,6 +159,7 @@ class App extends Component {
         this.setState({ searchView: false });
         this.setState({ indBookViewOn: true });
       }
+
     } 
     
     console.log(this.state.isSaved)

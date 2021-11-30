@@ -6,7 +6,7 @@ const Book = new Schema ({
     title: { type: String, required: true },
     author: { type: [String], required: true },
     publishDate: { type: String, required: true },
-    category: { type: String, required: true },
+    category: { type: [String], required: true },
     description: { type: String, required: true },
     comments: { type: [String], required: true },
     savedGroup: { type: String, required: true },

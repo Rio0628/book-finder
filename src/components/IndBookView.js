@@ -17,7 +17,7 @@ const IndBookView = (props) => {
     }
 
     const setChangeClass = () => {
-        if (props.isSaved) { return ' saved'}
+        if (props.isSaved) { return 'saved'}
         else return ' ';
     }
     
@@ -43,7 +43,7 @@ const IndBookView = (props) => {
                     <option>To Read</option>
                 </select>
 
-                <div className={'saveBtn' + setChangeClass()} onClick={props.onClick}>{props.isSaved ? 'Book Saved' : 'Save Book'}</div>
+                <div className={'saveBtn ' + setChangeClass()} id='saveBtn' onClick={props.onClick}>{props.isSaved ? 'Book Saved' : 'Save Book'}</div>
             </div>
 
             <div className='addCommentCntr'>
