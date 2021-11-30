@@ -142,16 +142,26 @@ class App extends Component {
 
       if (e.target.id === 'indBookSearch') {
         // console.log(e.target.getAttribute('book'))
-        this.setState({ selectedBook: this.state.currentBooks[e.target.getAttribute('book')] });
+        const book = this.state.currentBooks[e.target.getAttribute('book')];
+      
         
         let books;
         await api.getAllBooks().then(allBooks => books = allBooks.data.data)
         // console.log(books)
         
-        const finalBook = books.filter(book => book.author[0] === this.state.selectedBook.author[0] && book.title === this.state.selectedBook.title && book.publishDate === this.state.selectedBook.publishDate);
+        const finalBook = books.filter(Book => Book.author[0] === book.author[0] && Book.title === book.title && Book.publishDate === book.publishDate);
 
-        if (finalBook[0]) { this.setState({ isSaved: true }); }
-        else this.setState({ isSaved: false });
+        if (finalBook[0]) { 
+          this.setState({ isSaved: true });
+          this.setState({ cllctnBookInput: finalBook[0].savedGroup });
+          book.savedGroup = finalBook[0].savedGroup;
+        }
+        else {
+          this.setState({ isSaved: false });
+          this.setState({ cllctnBookInput: 'General'});
+        }
+
+        this.setState({ selectedBook: book });
         // console.log(finalBook);
 
         this.setState({ previewOn: false });
@@ -160,11 +170,40 @@ class App extends Component {
         this.setState({ indBookViewOn: true });
       }
 
+      if (e.target.className === 'addBtn') {
+        const book = this.state.selectedBook;
+
+        if (this.state.isSaved) {
+          const bookId = e.target.getAttribute('book')
+
+          book.comments.push(this.state.addCommentInput);
+          this.setState({ selectedBook: book })
+
+          await api.updateBookById(bookId, book).then(book => console.log('book updated'))
+        } 
+        else {
+          book.savedGroup = 'General';
+          book.comments.push(this.state.addCommentInput);
+          this.setState({ selectedBook: book });
+          await api.insertBook(book).then( book => alert('Book Saved!') );
+          this.setState({ isSaved: true });
+        }
+      }
+
+      if (e.target.className === 'removeCmmntBtn') {
+        const book = this.state.selectedBook, bookId = e.target.getAttribute('book');
+
+        book.comments = book.comments.filter( comment => comment !== e.target.getAttribute('comment') )
+
+        await api.updateBookById(bookId, book).then(book => console.log('book updated'))
+        this.setState({ selectedBook: book })
+      }
+
     } 
     
-    console.log(this.state.isSaved)
+    // console.log(this.state.cllctnBookInput)
     // console.log(this.state.currentBooks)
-    // console.log(this.state.selectedBook)
+    console.log(this.state.selectedBook)
 
     return (
       <div className="container">

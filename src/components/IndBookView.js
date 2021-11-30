@@ -6,7 +6,7 @@ const IndBookView = (props) => {
     console.log(props.book)
     
     for (let i = 0; i < props.book.comments.length; i++ ) {
-        commentsCntr.push(  <div className='indComment' key={'Comment ' + i}>{props.book.comments[i]}<p className='removeCmmntBtn' comment={props.book.comments[i]}>X</p></div> );
+        commentsCntr.push(  <div className='indComment' key={'Comment ' + i}>{props.book.comments[i]}<p className='removeCmmntBtn' onClick={props.onClick} book={props.book._id} comment={props.book.comments[i]}>X</p></div> );
     }
 
     const changeCategory = () => {
@@ -42,14 +42,14 @@ const IndBookView = (props) => {
                     <option>Favorite</option>
                     <option>To Read</option>
                 </select>
-
+ 
                 <div className={'saveBtn ' + setChangeClass()} id='saveBtn' onClick={props.onClick}>{props.isSaved ? 'Book Saved' : 'Save Book'}</div>
             </div>
 
             <div className='addCommentCntr'>
                 <input className='addComment' placeholder='Add Comment About Book...' onChange={props.onChange}/>
 
-                <div className='addBtn' onClick={props.onClick}>Add Comment</div>
+                <div className='addBtn' book={props.book._id} onClick={props.onClick}>Add Comment</div>
             </div>
 
             <div className='commentsCntr'>

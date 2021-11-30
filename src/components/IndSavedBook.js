@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IndSavedBook = (props) => {
-    console.log(props.book._id)
+    // console.log(props.book._id)
     return (
         <div className='indBookCntr' id='indBookSaved' book={props.book._id} onClick={props.onClick}>
             <img className='thumbnailBook' src={props.book.thumbnail} alt='Thumbnail Book'></img>
