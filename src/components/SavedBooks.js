@@ -4,11 +4,12 @@ import IndSavedBook from './IndSavedBook';
 const SavedBooks = (props) => {
     let indBookCntr = [];  
 
+    // Function to show every saved book that is passed as a prop
     for (let i = 0; i < props.currentBooks.length; i++) {
-      
       indBookCntr.push( <IndSavedBook book={props.currentBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
     }
 
+    // Function to show the current saved group of a book if it has been saved 
     const showCrrntSavedGroup = () => props.currentSavedGroup === 'General' ? 'Saved Books: General' : props.currentSavedGroup === 'Favorites' ? 'Saved Books: Favorites' : props.currentSavedGroup === 'To Read' ? 'Saved Books: To Read' : 'Saved Books';
 
     return (

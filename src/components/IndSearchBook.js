@@ -1,8 +1,8 @@
 import React from 'react';
 
 const IndSearchBook = (props) => {
-    // console.log(props.bookInfo)
 
+    // Function to only show the first three authors of a book
     const authorsUpdt = () => {
         if (props.bookInfo.author.length === 1) { return `${props.bookInfo.author}`};
         if (props.bookInfo.author.length === 2) { return `${props.bookInfo.author[0]},  ${props.bookInfo.author[1]}`};

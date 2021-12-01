@@ -9,7 +9,6 @@ body {
   height: 100%;
   width: 100vw;
   color: #131112;
-  /* outline: 1px solid red; */
 }
 
 .previewMsg {
@@ -18,7 +17,6 @@ body {
   font-size: 23px;
   letter-spacing: 2px;
   font-weight: 600;
-  /* outline: 1px solid red; */
   text-align: center;
 }
 
@@ -51,7 +49,6 @@ body {
   left: .5rem;
   top: .5rem;
   font-size: 20px;
-  /* outline: 1px solid black; */
   padding: 3px;
   border-radius: 50%;
   cursor: pointer;
@@ -62,7 +59,6 @@ body {
   right: .5rem;
   top: .5rem;
   font-size: 22px;
-  /* outline: 1px solid black; */
   padding: 3px;
   border-radius: 50%;
   cursor: pointer;
@@ -124,7 +120,6 @@ body {
   width: 40%;
   height: 100vh;
   background: #fff;
-  /* background: linear-gradient( #f2f5ff, #dde1e8); */
   box-shadow: 2px 0px 6px #dde1e8;
   outline: 1px solid #dde1e8;
   z-index: 1;
@@ -141,7 +136,6 @@ body {
   left: 6rem;
   top: 2.2rem;
   font-size: 20px;
-  /* outline: 1px solid black; */
   padding: 3px;
   border-radius: 50%;
   cursor: pointer;
@@ -166,9 +160,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
-  /* outline: 1px solid red; */
- 
+  text-align: center; 
 }
 
 .category {
@@ -187,9 +179,6 @@ body {
   position: relative;
   bottom: 1rem;
   height: 100vh;
-  /* overflow-x: hidden;
-  overflow-y: scroll; */
-  /* outline: 1px solid red; */
 }
 
 .searchRsltsHeading {
@@ -198,7 +187,6 @@ body {
   text-align: center;
   font-weight: 600;
   box-shadow: 0px 1px 0px #9ca2a3;
-  /* outline: 1px solid green; */
 }
 
 .booksCntr {
@@ -206,15 +194,12 @@ body {
   bottom: 1rem;
   height: 100vh;
   overflow: auto;
-  /* outline: 1px solid red; */
 }
 
 .indBookCntr {
   display: flex;
-  /* justify-content: space-evenly;  */
   box-shadow: 1px 0px 0px #444545, -1px 0px 0px #444545;
   cursor: pointer;
-  /* outline: 1px solid black; */
 }
 
 .indBookCntr:nth-child(even) {
@@ -240,31 +225,25 @@ body {
   left: 1.5rem;
   width: 70vw;
   pointer-events: none;
-  /* outline: 1px solid red; */
 }
 
 .indBookTitle {
   position: relative;
-  /* left: 2rem; */
   bottom: 8px;
-  /* width: 75vw; */
   font-family: 'M PLUS 1';
   font-size: 17px;
   letter-spacing: 3px;
   font-weight: 600;
   overflow: hidden;
-  /* outline: 1px solid red; */
 }
 
 .authorGenreCntr {
   position: relative;
-  /* left: 2rem; */
   bottom: 17px;
   width: 105%;
   display: flex;
   justify-content: space-between;
   height: 1.5rem;
-  /* outline: 1px solid red; */
   font-size: 11px;
   align-items: center;
   pointer-events: none;
@@ -296,7 +275,6 @@ body {
   padding: 1px 3px;
   border-radius: 2px;
   cursor: pointer;
-  /* outline: 1px solid red; */
 }
 
 .removeBtn:hover {
@@ -317,9 +295,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* bottom: 1rem; */
   height: 100vh;
-  /* outline: 1px solid red; */
 }
 
 .thumbnail {
@@ -338,7 +314,6 @@ body {
   font-weight: 600;
   letter-spacing: 3px;
   text-align: center;
-  /* outline: 1px solid red; */
 }
 
 .authorBook {
@@ -346,7 +321,6 @@ body {
   bottom: 1rem;
   font-size: 13px;
   letter-spacing: 1px;
-  /* outline: 1px solid red; */
 }
 
 .dateGenreCntr {
@@ -358,7 +332,6 @@ body {
   height: 1.3rem;
   font-size: 15px;
   align-items: center;
-  /* outline: 1px solid red; */
 }
 
 .descriptionBook {
@@ -387,7 +360,6 @@ body {
   width: 70%;
   display: flex;
   justify-content: space-between;
-  /* outline: 1px solid black; */
 }
 
 .cllctnBook {
@@ -432,7 +404,6 @@ body {
   align-items: center;
   bottom: .8rem;
   width: 85%; 
-  /* outline: 1px solid red; */
 }
 
 .addComment {
@@ -513,7 +484,6 @@ body {
   font-weight: 600;
   cursor: pointer;
   padding: 0px 3px;
-  /* outline: 1px solid red; */
   border-radius: 3px;
 }
 
@@ -557,7 +527,6 @@ body {
     width: 15rem;
     bottom: 15px;
     font-size: 14px;
-    /* outline: 1px solid red; */
   }
 
   .searchBtn {
@@ -604,7 +573,6 @@ body {
   }
   
   .category {
-    /* outline: 1px solid red; */
     font-size: 13px;
   }
 
@@ -654,7 +622,6 @@ body {
     width: 17rem;
     bottom: 15px;
     font-size: 16px;
-    /* outline: 1px solid red; */
   }
 
   .searchBtn {
@@ -696,7 +663,6 @@ body {
   }
   
   .category {
-    /* outline: 1px solid red; */
     font-size: 15px;
   }
 
@@ -784,7 +750,6 @@ body {
   .mainInfoCntr {
     left: 10rem;
     width: 60vw;
-    /* outline: 1px solid red; */
   }
 
   .authorGenreCntr {
@@ -820,7 +785,6 @@ body {
     width: 20rem;
     bottom: 19px;
     font-size: 17px;
-    /* outline: 1px solid red; */
   }
 
   .searchBtn {
@@ -863,7 +827,6 @@ body {
   }
   
   .category {
-    /* outline: 1px solid red; */
     font-size: 17px;
   }
 
@@ -960,7 +923,6 @@ body {
   .mainInfoCntr {
     left: 17rem;
     width: 53vw;
-    /* outline: 1px solid red; */
   }
 
   .indBookTitle {

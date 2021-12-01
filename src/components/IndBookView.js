@@ -3,12 +3,12 @@ import React from 'react';
 const IndBookView = (props) => {
     let commentsCntr = [];
 
-    console.log(props.book)
-    
+    // Function to show each individual comment 
     for (let i = 0; i < props.book.comments.length; i++ ) {
         commentsCntr.push(  <div className='indComment' key={'Comment ' + i}>{props.book.comments[i]}<p className='removeCmmntBtn' onClick={props.onClick} book={props.book._id} comment={props.book.comments[i]}>X</p></div> );
     }
 
+    // Function to show category of book if there is one available 
     const changeCategory = () => {
         if (props.book.savedGroup) {
             return props.book.savedGroup
@@ -16,6 +16,7 @@ const IndBookView = (props) => {
         else return 'General'
     }
 
+    // Takes care of changing the functionality of the save button if the bookm is saved 
     const setChangeClass = () => {
         if (props.isSaved) { return 'saved'}
         else return ' ';

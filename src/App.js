@@ -27,16 +27,14 @@ class App extends Component {
   render () {
     
     const onChange = (e) => {
-      console.log(e.target)
-
+      // Handles getting the values of the input elements and stores the value within their respective states 
       if (e.target.className === 'searchbar') { this.setState({ searchInput: e.target.value }); };
-
       if (e.target.className === 'addComment') { this.setState({ addCommentInput: e.target.value }); };
-
       if (e.target.className === 'cllctnBook') { this.setState({ cllctnBookInput: e.target.value }); };
     }
 
     const handleSidebar = async () => {
+      // Handles bringing the sidebar into view in both viewport changes 
       await this.setState({ sidebarOn: !this.state.sidebarOn })
 
       if (this.state.sidebarOn === true ) {
@@ -46,11 +44,12 @@ class App extends Component {
     }
 
     const handleSearchbar = () => {
+      // Handles bringing the searchbar into view 
       this.setState({ searchOn: !this.state.searchOn });
     }
 
     const getFltrdBooks = async (group, books) => {
-      console.log(books)
+      // Function to filter the saved books by the group being viewed
       if (group === 'General' && books.length > 0) {
         books = books.filter( book => book.savedGroup === "General");
       }
@@ -66,9 +65,8 @@ class App extends Component {
       this.setState({ currentBooks: books });
     }
 
-    // api.getAllBooks().then(books => console.log(books.data.data))
-
     const searchBooks = async () => {
+      // Main function to search books from the API and individual objects with only the necessary information from each book 
       let items, updatedList = [];
       await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => items = data.data.items );
 
@@ -79,7 +77,6 @@ class App extends Component {
       }
 
       this.setState({ currentBooks: updatedList });
-      // console.log(updatedList)
 
       if (this.state.indBookViewOn) {this.setState({ searchOn: !this.state.searchOn });}
       this.setState({ previewOn: false });
@@ -89,6 +86,7 @@ class App extends Component {
     }
 
     const setSavedBooksView = () => {
+      // Function to bring the saved book view 
       this.setState({ previewOn: false });
       this.setState({ indBookViewOn: false });
       this.setState({ searchView: false });
@@ -96,10 +94,13 @@ class App extends Component {
     };
 
     const onClick = async (e) => {
-      console.log(e.target.className)
+      // Main onClick function for application
 
       if (e.target.className === 'category') {
+        // Main Function to change between different components or view within the application 
         this.setState({ sidebarStatus: '' });
+
+        // Code to search REST API for books and differenciate by with group is being viewed
         if (e.target.id === 'searchBook') {
           this.setState({ indBookViewOn: false });
           this.setState({ savedBooksView: false });
@@ -113,7 +114,6 @@ class App extends Component {
           this.setState({ currentSavedGroup: '' });
 
           setSavedBooksView();  
-          // else this.setState({ emptySavedBooks: false });
         }
         if (e.target.id === 'general') {
           let books;
@@ -123,7 +123,6 @@ class App extends Component {
           this.setState({ currentSavedGroup: 'General' });  
           
           setSavedBooksView();
-          // else this.setState({ emptySavedBooks: false });
         }
 
         if (e.target.id === 'favorite') {
@@ -134,7 +133,6 @@ class App extends Component {
           this.setState({ currentSavedGroup: 'Favorite' }); 
 
           setSavedBooksView();
-          // else this.setState({ emptySavedBooks: false });
         }
         if (e.target.id === 'toRead') {
           let books;
@@ -144,10 +142,10 @@ class App extends Component {
           this.setState({ currentSavedGroup: 'To Read' });  
 
           setSavedBooksView();  
-          // else this.setState({ emptySavedBooks: false });
         }
       }
 
+      // Function to save book within database 
       if (e.target.id === 'saveBtn') {
         const book = this.state.selectedBook;
         book.savedGroup = this.state.cllctnBookInput;
@@ -157,6 +155,7 @@ class App extends Component {
         this.setState({ isSaved: true });
       }
 
+      // Function to remove a book from the database 
       if (e.target.className === 'removeBtn') {
         const book = e.target.getAttribute('book');
         await api.deleteBookById(book).then(book => alert('Book Removed'));
@@ -166,6 +165,7 @@ class App extends Component {
         await getFltrdBooks(this.state.currentSavedGroup, books);
       }
 
+      // Function to bring up the saved books view 
       if (e.target.className === 'savedBkBtn') {
         let books;
         await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert("No Books Saved"));
@@ -173,6 +173,7 @@ class App extends Component {
         setSavedBooksView();
       }
 
+      // Function to view individual saved book 
       if (e.target.id === 'indBookSaved') {
         await api.getBookById(e.target.getAttribute('book')).then(book => this.setState({ selectedBook: book.data.data }) )
         
@@ -184,22 +185,20 @@ class App extends Component {
         this.setState({ indBookViewOn: true });
       }
 
+      // Function to view individual search book 
       if (e.target.id === 'indBookSearch') {
-        // console.log(e.target.getAttribute('book'))
         const book = this.state.currentBooks[e.target.getAttribute('book')];
         
         let books;
-        await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), this.setState({ noSvdBooks: true }) )
-        // console.log(books)
+        await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), books = '' )
         
-        if (!this.state.noSvdBooks) {
+        // Shows the user if the book has already been saved or not 
           const finalBook = books.filter(Book => Book.author[0] === book.author[0] && Book.title === book.title && Book.publishDate === book.publishDate);
 
-          if (finalBook[0]) { 
-            this.setState({ isSaved: true });
-            this.setState({ cllctnBookInput: finalBook[0].savedGroup });
-            book.savedGroup = finalBook[0].savedGroup;
-          }
+        if (finalBook[0]) { 
+          this.setState({ isSaved: true });
+          this.setState({ cllctnBookInput: finalBook[0].savedGroup });
+          book.savedGroup = finalBook[0].savedGroup;
         }
         else {
           this.setState({ isSaved: false });
@@ -207,7 +206,6 @@ class App extends Component {
         }
 
         this.setState({ selectedBook: book });
-        // console.log(finalBook);
 
         this.setState({ previewOn: false });
         this.setState({ savedBooksView: false });
@@ -215,6 +213,7 @@ class App extends Component {
         this.setState({ indBookViewOn: true });
       }
 
+      // Function to add new comment to book 
       if (e.target.className === 'addBtn') {
         const book = this.state.selectedBook;
 
@@ -235,6 +234,7 @@ class App extends Component {
         }
       }
 
+      // Function to remove comment from book 
       if (e.target.className === 'removeCmmntBtn') {
         const book = this.state.selectedBook, bookId = e.target.getAttribute('book');
 
@@ -245,10 +245,6 @@ class App extends Component {
       }
 
     } 
-    
-    // console.log(this.state.emptySavedBooks)
-    console.log(this.state.currentBooks)
-    // console.log(this.state.selectedBook)
 
     return (
       <div className="container">
