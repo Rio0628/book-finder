@@ -68,7 +68,7 @@ class App extends Component {
     const searchBooks = async () => {
       // Main function to search books from the API and individual objects with only the necessary information from each book 
       let items, updatedList = [];
-      await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter`).then(data => items = data.data.items );
+      await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchInput}`).then(data => items = data.data.items ).catch(err => alert("Invalid Search Input"));
 
       for (let i = 0; i < items.length; i++) {
         const object = { thumbnail: items[i].volumeInfo.imageLinks.thumbnail, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
@@ -199,6 +199,8 @@ class App extends Component {
           this.setState({ isSaved: true });
           this.setState({ cllctnBookInput: finalBook[0].savedGroup });
           book.savedGroup = finalBook[0].savedGroup;
+          book._id = finalBook[0]._id;
+          book.comments = finalBook[0].comments;
         }
         else {
           this.setState({ isSaved: false });

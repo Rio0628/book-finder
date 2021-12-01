@@ -351,7 +351,8 @@ body {
 }
 
 .descriptionBook::-webkit-scrollbar-thumb {
-  background: red;
+  background: #e2dfdf;
+  border-radius: 50%;
 }
 
 .saveBookCntr {
