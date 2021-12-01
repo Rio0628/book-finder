@@ -9,9 +9,11 @@ const SavedBooks = (props) => {
       indBookCntr.push( <IndSavedBook book={props.currentBooks[i]} onClick={props.onClick} key={'IndSearchBook ' + i}/> );
     }
 
+    const showCrrntSavedGroup = () => props.currentSavedGroup === 'General' ? 'Saved Books: General' : props.currentSavedGroup === 'Favorites' ? 'Saved Books: Favorites' : props.currentSavedGroup === 'To Read' ? 'Saved Books: To Read' : 'Saved Books';
+
     return (
         <div className='savedBooksCntr'>
-        <p className='savedBooksHeading'>Saved Books</p>
+        <p className='savedBooksHeading'>{showCrrntSavedGroup()}</p>
 
         <div className='booksCntr'>
             { indBookCntr }

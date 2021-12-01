@@ -49,6 +49,23 @@ class App extends Component {
       this.setState({ searchOn: !this.state.searchOn });
     }
 
+    const getFltrdBooks = async (group, books) => {
+      console.log(books)
+      if (group === 'General' && books.length > 0) {
+        books = books.filter( book => book.savedGroup === "General");
+      }
+      
+      if (group === 'Favorite' && books.length > 0) {
+        books = books.filter( book => book.savedGroup === "Favorite");
+      }
+      
+      if (group === 'To Read' && books.length > 0) {
+        books = books.filter( book => book.savedGroup === "To Read");
+      }
+
+      this.setState({ currentBooks: books });
+    }
+
     // api.getAllBooks().then(books => console.log(books.data.data))
 
     const searchBooks = async () => {
@@ -90,19 +107,44 @@ class App extends Component {
         }
         if (e.target.id === 'savedBooks') {
           let books;
-          await api.getAllBooks().then(allbooks => books = allbooks.data.data )
-          console.log(books)
+          await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert('No Books Saved'), books = '' ) 
+          await getFltrdBooks('', books);
           this.setState({ currentBooks: books })
-          setSavedBooksView();
+          this.setState({ currentSavedGroup: '' });
+
+          setSavedBooksView();  
+          // else this.setState({ emptySavedBooks: false });
         }
         if (e.target.id === 'general') {
+          let books;
+          await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert('No Books Saved'), books = '' )
+
+          await getFltrdBooks('General', books);
+          this.setState({ currentSavedGroup: 'General' });  
+          
           setSavedBooksView();
+          // else this.setState({ emptySavedBooks: false });
         }
-        if (e.target.id === 'favorites') {
+
+        if (e.target.id === 'favorite') {
+          let books;
+          await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert('No Books Saved'), books = '' )
+
+          if (!this.state.emptySavedBooks) {await getFltrdBooks('Favorite', books);}
+          this.setState({ currentSavedGroup: 'Favorite' }); 
+
           setSavedBooksView();
+          // else this.setState({ emptySavedBooks: false });
         }
         if (e.target.id === 'toRead') {
-          setSavedBooksView();
+          let books;
+          await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert('No Books Saved'), books = '' )
+
+          await getFltrdBooks('To Read', books);
+          this.setState({ currentSavedGroup: 'To Read' });  
+
+          setSavedBooksView();  
+          // else this.setState({ emptySavedBooks: false });
         }
       }
 
@@ -119,12 +161,14 @@ class App extends Component {
         const book = e.target.getAttribute('book');
         await api.deleteBookById(book).then(book => alert('Book Removed'));
 
-        await api.getAllBooks().then( books => this.setState({ currentBooks: books.data.data }));
+        let books;
+        await api.getAllBooks().then(allbooks => books = allbooks.data.data )
+        await getFltrdBooks(this.state.currentSavedGroup, books);
       }
 
       if (e.target.className === 'savedBkBtn') {
         let books;
-        await api.getAllBooks().then(allbooks => books = allbooks.data.data)
+        await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert("No Books Saved"));
         this.setState({ currentBooks: books});
         setSavedBooksView();
       }
@@ -143,18 +187,19 @@ class App extends Component {
       if (e.target.id === 'indBookSearch') {
         // console.log(e.target.getAttribute('book'))
         const book = this.state.currentBooks[e.target.getAttribute('book')];
-      
         
         let books;
-        await api.getAllBooks().then(allBooks => books = allBooks.data.data)
+        await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), this.setState({ noSvdBooks: true }) )
         // console.log(books)
         
-        const finalBook = books.filter(Book => Book.author[0] === book.author[0] && Book.title === book.title && Book.publishDate === book.publishDate);
+        if (!this.state.noSvdBooks) {
+          const finalBook = books.filter(Book => Book.author[0] === book.author[0] && Book.title === book.title && Book.publishDate === book.publishDate);
 
-        if (finalBook[0]) { 
-          this.setState({ isSaved: true });
-          this.setState({ cllctnBookInput: finalBook[0].savedGroup });
-          book.savedGroup = finalBook[0].savedGroup;
+          if (finalBook[0]) { 
+            this.setState({ isSaved: true });
+            this.setState({ cllctnBookInput: finalBook[0].savedGroup });
+            book.savedGroup = finalBook[0].savedGroup;
+          }
         }
         else {
           this.setState({ isSaved: false });
@@ -201,9 +246,9 @@ class App extends Component {
 
     } 
     
-    // console.log(this.state.cllctnBookInput)
-    // console.log(this.state.currentBooks)
-    console.log(this.state.selectedBook)
+    // console.log(this.state.emptySavedBooks)
+    console.log(this.state.currentBooks)
+    // console.log(this.state.selectedBook)
 
     return (
       <div className="container">
@@ -237,14 +282,14 @@ class App extends Component {
             <p className='category' id='searchBook' onClick={onClick}>Search Book</p>
             <p className='category' id='savedBooks' onClick={onClick}>Saved Books</p>
             <p className='category' id='general' onClick={onClick}>General</p>
-            <p className='category' id='favorites' onClick={onClick}>Favorites</p>
+            <p className='category' id='favorite' onClick={onClick}>Favorites</p>
             <p className='category' id='toRead' onClick={onClick}>To Read</p>
           </div>
         </div>
         
         { this.state.previewOn ? <p className='previewMsg'>Search book or view <span className='savedBkBtn' onClick={onClick}>Saved Books</span></p> : null }
         { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
-        { this.state.savedBooksView ?  <SavedBooks currentBooks={this.state.currentBooks} onClick={onClick}/> : null }
+        { this.state.savedBooksView ?  <SavedBooks currentSavedGroup={this.state.currentSavedGroup} currentBooks={this.state.currentBooks} onClick={onClick}/> : null }
         { this.state.indBookViewOn ? <IndBookView isSaved={this.state.isSaved} book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
       
       </div>
