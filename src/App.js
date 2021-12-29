@@ -70,9 +70,12 @@ class App extends Component {
       let items, updatedList = [];
       await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchInput}`).then(data => items = data.data.items ).catch(err => alert("Invalid Search Input"));
 
-      for (let i = 0; i < items.length; i++) {
-        const object = { thumbnail: items[i].volumeInfo.imageLinks.thumbnail, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
+      // console.log(items)
 
+      for (let i = 0; i < items.length; i++) {
+        const object = { thumbnail: items[i].volumeInfo.imageLinks, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
+
+        console.log(object)
         updatedList.push(object)
       }
 
@@ -189,23 +192,23 @@ class App extends Component {
       if (e.target.id === 'indBookSearch') {
         const book = this.state.currentBooks[e.target.getAttribute('book')];
         
-        let books;
+        let books = [];
         await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), books = '' )
-        
+   console.log(books) 
         // Shows the user if the book has already been saved or not 
-          const finalBook = books.filter(Book => Book.author[0] === book.author[0] && Book.title === book.title && Book.publishDate === book.publishDate);
+        // const finalBook = books.filter(indbook => indbook.author[0] === book.author[0] && indbook.title === book.title && indbook.publishDate === book.publishDate);
 
-        if (finalBook[0]) { 
-          this.setState({ isSaved: true });
-          this.setState({ cllctnBookInput: finalBook[0].savedGroup });
-          book.savedGroup = finalBook[0].savedGroup;
-          book._id = finalBook[0]._id;
-          book.comments = finalBook[0].comments;
-        }
-        else {
-          this.setState({ isSaved: false });
-          this.setState({ cllctnBookInput: 'General'});
-        }
+        // if (finalBook[0]) { 
+        //   this.setState({ isSaved: true });
+        //   this.setState({ cllctnBookInput: finalBook[0].savedGroup });
+        //   book.savedGroup = finalBook[0].savedGroup;
+        //   book._id = finalBook[0]._id;
+        //   book.comments = finalBook[0].comments;
+        // }
+        // else {
+        //   this.setState({ isSaved: false });
+        //   this.setState({ cllctnBookInput: 'General'});
+        // }
 
         this.setState({ selectedBook: book });
 
