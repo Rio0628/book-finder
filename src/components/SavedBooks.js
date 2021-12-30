@@ -10,7 +10,7 @@ const SavedBooks = (props) => {
     }
 
     // Function to show the current saved group of a book if it has been saved 
-    const showCrrntSavedGroup = () => props.currentSavedGroup === 'General' ? 'Saved Books: General' : props.currentSavedGroup === 'Favorites' ? 'Saved Books: Favorites' : props.currentSavedGroup === 'To Read' ? 'Saved Books: To Read' : 'Saved Books';
+    const showCrrntSavedGroup = () => props.currentSavedGroup === 'General' ? 'Saved Books: General' : props.currentSavedGroup === 'Favorite' ? 'Saved Books: Favorites' : props.currentSavedGroup === 'To Read' ? 'Saved Books: To Read' : 'Saved Books';
 
     return (
         <div className='savedBooksCntr'>

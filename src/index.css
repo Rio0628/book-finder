@@ -320,7 +320,9 @@ body {
   position: relative;
   bottom: 1rem;
   font-size: 13px;
+  width: 90%;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .dateGenreCntr {

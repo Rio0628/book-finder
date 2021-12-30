@@ -25,7 +25,7 @@ const IndBookView = (props) => {
     return (
         <div className='indBookView'>
 
-            <img className='thumbnail' src={props.book.thumbnail} alt='thumbnail'></img>
+            <img className='thumbnail' src={props.book.thumbnail ? props.book.thumbnail.thumbnail : ''} alt='thumbnail'></img>
 
             <p className='titleBook'>{props.book.title}</p>
             <p className='authorBook'>{props.book.author}</p>
