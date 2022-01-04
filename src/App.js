@@ -177,8 +177,12 @@ class App extends Component {
 
       // Function to view individual saved book 
       if (e.target.id === 'indBookSaved') {
-        await api.getBookById(e.target.getAttribute('book')).then(book => this.setState({ selectedBook: book.data.data }) )
-        
+        let selectedBook;
+        await api.getBookById(e.target.getAttribute('book')).then(book => selectedBook = book.data.data)
+        selectedBook.thumbnail = {thumbnail: selectedBook.thumbnail};
+  
+        this.setState({ selectedBook: selectedBook});
+
         this.setState({ isSaved: true });
 
         this.setState({ previewOn: false });
