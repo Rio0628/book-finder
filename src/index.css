@@ -563,6 +563,7 @@ body {
   .sidebar.active {
     position: relative;
     transition: .2s ease-in;
+    pointer-events: auto;
     opacity: 1;
     animation: sidebarAppear 1 1s;
   }
