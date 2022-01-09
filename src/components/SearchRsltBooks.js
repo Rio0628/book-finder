@@ -10,7 +10,7 @@ const SearchRsltBooks = (props) => {
   
   return (
     <div className='searchBooksCntr'>
-      <p className='searchRsltsHeading'>Results: {props.searchInput}</p>
+      <p className='searchRsltsHeading'>Results: {props.searchResult}</p>
 
       <div className='booksCntr'>
         { indBookCntr }

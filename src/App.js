@@ -68,7 +68,8 @@ class App extends Component {
     const searchBooks = async () => {
       // Main function to search books from the API and individual objects with only the necessary information from each book 
       let items, updatedList = [];
-      await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchInput}`).then(data => items = data.data.items ).catch(err => alert("Invalid Search Input"));
+      await this.setState({ searchResult: this.state.searchInput});
+      await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchResult}`).then(data => items = data.data.items ).catch(err => alert("Invalid Search Input"));
 
       for (let i = 0; i < items.length; i++) {
         const object = { thumbnail: items[i].volumeInfo.imageLinks, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
@@ -292,7 +293,7 @@ class App extends Component {
         </div>
         
         { this.state.previewOn ? <p className='previewMsg'>Search book or view <span className='savedBkBtn' onClick={onClick}>Saved Books</span></p> : null }
-        { this.state.searchView ? <SearchRsltBooks searchInput={this.state.searchInput} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
+        { this.state.searchView ? <SearchRsltBooks searchResult={this.state.searchResult} resultBooks={this.state.currentBooks} onClick={onClick} /> : null }
         { this.state.savedBooksView ?  <SavedBooks currentSavedGroup={this.state.currentSavedGroup} currentBooks={this.state.currentBooks} onClick={onClick}/> : null }
         { this.state.indBookViewOn ? <IndBookView isSaved={this.state.isSaved} book={this.state.selectedBook} onClick={onClick} onChange={onChange}/> : null }
       
