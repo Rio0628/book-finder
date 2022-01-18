@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/book-finder', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://${process.env.REACT_APP_DB_USERNAME}:${process.env.REACT_APP_DB_PASSWORD}@newcluster.a2laf.mongodb.net/Book-Finder?retryWrites=true&w=majority`, { useNewUrlParser: true })
         .catch(e => { console.error("Connection Error", e.message) })
 
 const db = mongoose.connection;

@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:3000/api', });
-
-export const insertBook = payload => api.post( `/book`, payload );
-export const getAllBooks = () => api.get(`/books`);
-export const updateBookById = (id, payload) => api.put(`/book/${id}`, payload);
-export const deleteBookById = id => api.delete(`/book/${id}`);
-export const getBookById = id => api.get(`/book/${id}`);
+export const insertBook = payload => axios.post( `api/book`, payload );
+export const getAllBooks = () => axios.get(`api/book`);
+export const updateBookById = (id, payload) => axios.put(`api/book/${id}`, payload);
+export const deleteBookById = id => axios.delete(`api/book/${id}`);
+export const getBookById = id => axios.get(`api/book/${id}`);
 
 const apis = {
     insertBook,

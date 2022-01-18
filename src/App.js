@@ -70,12 +70,14 @@ class App extends Component {
       let items, updatedList = [];
       await this.setState({ searchResult: this.state.searchInput});
       await Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchResult}`).then(data => items = data.data.items ).catch(err => alert("Invalid Search Input"));
-
+      
       for (let i = 0; i < items.length; i++) {
         const object = { thumbnail: items[i].volumeInfo.imageLinks, title: items[i].volumeInfo.title, author: items[i].volumeInfo.authors, publishDate: items[i].volumeInfo.publishedDate, category: items[i].volumeInfo.categories, description: items[i].volumeInfo.description, comments: [], savedGroup: ''};
 
         updatedList.push(object)
       }
+      console.log(items)
+      console.log(updatedList);
 
       this.setState({ currentBooks: updatedList });
 
@@ -148,11 +150,12 @@ class App extends Component {
 
       // Function to save book within database 
       if (e.target.id === 'saveBtn') {
-        const book = this.state.selectedBook;
+        const book = await this.state.selectedBook;
         const thumbnail = () => book.thumbnail ? book.thumbnail.thumbnail : '';
         book.savedGroup = this.state.cllctnBookInput;
         book.thumbnail = thumbnail();
-        await api.insertBook(book).then( book => alert('Book Saved!') );
+        console.log(book)
+        await api.insertBook(book).then( book => alert('Book Saved!') ).catch( err => alert('Error Saving Book') );
 
         this.setState({ isSaved: true });
       }
@@ -169,8 +172,8 @@ class App extends Component {
 
       // Function to bring up the saved books view 
       if (e.target.className === 'savedBkBtn') {
-        let books;
-        await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert("No Books Saved"));
+        let books = [];
+        await api.getAllBooks().then(allbooks => books = allbooks.data.data ).catch(err => alert("No Books Saved"), books = []);
         this.setState({ currentBooks: books});
         this.setState({ currentSavedGroup: '' });
         setSavedBooksView();
@@ -197,7 +200,7 @@ class App extends Component {
         const book = this.state.currentBooks[e.target.getAttribute('book')];
         
         let books = [];
-        await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), books = '' )
+        await api.getAllBooks().then(allBooks => books = allBooks.data.data).catch(err => console.log('No previous saved books'), books = [] )
 
         // Shows the user if the book has already been saved or not 
         const finalBook = books.filter(indbook => indbook.author[0] === book.author[0] && indbook.title === book.title && indbook.publishDate === book.publishDate);
@@ -237,7 +240,7 @@ class App extends Component {
         else {
           book.savedGroup = 'General';
           book.comments.push(this.state.addCommentInput);
-          this.setState({ selectedBook: book });
+          book.thumbnail = book.thumbnail.thumbnail;
           await api.insertBook(book).then( book => alert('Book Saved!') );
           this.setState({ isSaved: true });
         }

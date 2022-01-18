@@ -4,8 +4,8 @@ const IndSearchBook = (props) => {
 
     // Function to only show the first three authors of a book
     const authorsUpdt = () => {
-        if (props.bookInfo.autho) {
-            if (props.bookInfo.author.length === 1) { return `${props.bookInfo.author}`};
+        if (props.bookInfo.author) {
+            if (props.bookInfo.author.length === 1) { return `${props.bookInfo.author[0]}`};
             if (props.bookInfo.author.length === 2) { return `${props.bookInfo.author[0]},  ${props.bookInfo.author[1]}`};
             if (props.bookInfo.author.length === 3) { return `${props.bookInfo.author[0]},  ${props.bookInfo.author[1]},  ${props.bookInfo.author[2]}`};
         }
